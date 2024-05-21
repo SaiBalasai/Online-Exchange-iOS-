@@ -441,6 +441,7 @@
                         <outlet property="lastname" destination="GTM-HB-EpG" id="YI6-fw-L12"/>
                         <outlet property="password" destination="2Bz-CO-wW9" id="ghm-rG-B18"/>
                         <outlet property="phone" destination="Aph-HW-tPd" id="8bE-8K-chU"/>
+                        <segue destination="WxS-6g-1ow" kind="show" identifier="signUpToLoginSegue" id="GRx-2l-dtX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="deE-W9-KBV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -450,7 +451,7 @@
         <!--Forgot Password-->
         <scene sceneID="bnE-DC-61Z">
             <objects>
-                <viewController storyboardIdentifier="ForgotPasswordVC" id="rca-Yy-zKU" customClass="ForgotPasswordVC" customModule="Online_Exchange" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ForgotPasswordVC" id="rca-Yy-zKU" customClass="ForgotPasswordVC" customModule="Online_Exchange" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xXv-kT-htA">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -522,11 +523,8 @@
                                                 <rect key="frame" x="0.0" y="122" width="361" height="100"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="skg-wy-Ku0">
-                                                        <rect key="frame" x="149" y="45" width="63.333333333333343" height="50"/>
+                                                        <rect key="frame" x="8" y="45" width="345" height="47"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="50" id="G88-do-de3"/>
-                                                        </constraints>
                                                         <state key="normal" title="Send">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
@@ -548,8 +546,10 @@
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstItem="skg-wy-Ku0" firstAttribute="centerX" secondItem="5VH-Qs-drN" secondAttribute="centerX" id="h4p-n0-Ke4"/>
-                                                    <constraint firstAttribute="bottom" secondItem="skg-wy-Ku0" secondAttribute="bottom" constant="5" id="qDf-Sd-3cf"/>
+                                                    <constraint firstItem="skg-wy-Ku0" firstAttribute="leading" secondItem="5VH-Qs-drN" secondAttribute="leadingMargin" id="1z5-tu-KyI"/>
+                                                    <constraint firstItem="skg-wy-Ku0" firstAttribute="top" secondItem="5VH-Qs-drN" secondAttribute="top" constant="45" id="OQL-27-TPP"/>
+                                                    <constraint firstItem="skg-wy-Ku0" firstAttribute="trailing" secondItem="5VH-Qs-drN" secondAttribute="trailingMargin" id="TGg-Vl-XlU"/>
+                                                    <constraint firstItem="skg-wy-Ku0" firstAttribute="bottom" secondItem="5VH-Qs-drN" secondAttribute="bottomMargin" id="bau-hM-zNP"/>
                                                     <constraint firstAttribute="height" constant="100" id="zEZ-Tb-eF6"/>
                                                 </constraints>
                                             </view>
@@ -827,16 +827,33 @@
                     <connections>
                         <outlet property="email" destination="WHH-hg-wFq" id="0Nc-3R-Q2M"/>
                         <outlet property="password" destination="Kr7-nW-Toy" id="4KH-cQ-lTc"/>
+                        <segue destination="nQb-B3-zOu" kind="show" identifier="loginSuccessSegue" id="7wx-HK-pXd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WaI-RE-JuU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4238.9312977099235" y="162.67605633802819"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="5Us-xs-k6W">
+            <objects>
+                <viewController id="nQb-B3-zOu" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lf3-a8-phd">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="eMM-5n-xYZ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="jDS-T7-UfV"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZDN-iq-CIu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5257" y="163"/>
+        </scene>
         <!--Online Exchange-->
         <scene sceneID="31H-ZF-Llt">
             <objects>
-                <viewController storyboardIdentifier="IntialVC" id="EHP-r4-J7C" customClass="IntialVC" customModule="Online_Exchange" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="IntialVC" id="EHP-r4-J7C" customClass="initialVC" customModule="Online_Exchange" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ihA-DX-MLt">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -850,7 +867,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="xU2-4r-iVx">
                                 <rect key="frame" x="10" y="153" width="373" height="655"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mVd-kP-el6" userLabel="Lottie Animation" customClass="LottieAnimationView" customModule="Lottie">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mVd-kP-el6" userLabel="Lottie Animation" customClass="LottieAnimationView" customModule="Online_Exchange" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="373" height="400"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -916,9 +933,9 @@
                             <constraint firstAttribute="trailing" secondItem="xU2-4r-iVx" secondAttribute="trailing" constant="10" id="zhS-RP-c9l"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Online Exchange" largeTitleDisplayMode="always" id="Zj7-AI-CHj"/>
+                    <navigationItem key="navigationItem" title="Online Exchange" id="Zj7-AI-CHj"/>
                     <connections>
-                        <outlet property="lottie" destination="mVd-kP-el6" id="GjZ-WF-yOk"/>
+                        <outlet property="lottie" destination="mVd-kP-el6" id="SDO-wR-Pzt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ASR-aO-ROU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -933,6 +950,10 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="fH5-Pn-3p4">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" type="system" pointSize="31"/>
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -944,6 +965,9 @@
             <point key="canvasLocation" x="2249.6183206106871" y="162.67605633802819"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="V1W-ag-rX9"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

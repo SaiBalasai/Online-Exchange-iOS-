@@ -8,6 +8,7 @@
 import UIKit
 import Firebase
 import FirebaseFirestore
+import FirebaseAuth
 
 class SignupVC: UIViewController {
 
@@ -19,85 +20,94 @@ class SignupVC: UIViewController {
     @IBOutlet weak var confirmPassword: UITextField!
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-       }
-    
+            super.viewDidLoad()
+            
+            self.view.backgroundColor = UIColor.systemGray6
+            
+          
+            
+           }
     @IBAction func onSignUp(_ sender: Any) {
-//        if validate() {
-//
-//            let userData = UserRegistrationModel(firstname: self.firstname.text ?? "", lastname: self.lastname.text ?? "", email: self.email.text ?? "", phone: self.phone.text ?? "", password: self.password.text ?? "")
-//            
-//            FireStoreManager.shared.signUp(user: userData) { success in
-//                if success{
-//                    self.navigationController?.popViewController(animated: true)
-//                }
-//            }
-//        }
-        
-    }
+        guard let firstName = firstname.text, !firstName.isEmpty,
+                            let lastName = lastname.text, !lastName.isEmpty,
+                            let email = email.text, !email.isEmpty,
+                            let phone = phone.text, !phone.isEmpty,
+                            let password = password.text, !password.isEmpty,
+                            let confirmPassword = confirmPassword.text, !confirmPassword.isEmpty else {
+                          showAlert(message: "Please fill in all fields.")
+                          return
+                      }
 
-    
-    func validate() ->Bool {
-       
-//        if(self.email.text!.isEmpty) {
-//            globalAlart(message: "Please enter email.")
-//            return false
-//        }
-//        
-//        if !email.text!.emailIsCorrect() {
-//            globalAlart(message: "Please enter valid email id")
-//            return false
-//        }
-//    
-//              
-//        if(self.password.text!.isEmpty) {
-//            globalAlart(message: "Please enter password.")
-//            return false
-//        }
-//        
-//        if(self.confirmPassword.text!.isEmpty) {
-//            globalAlart(message: "Please enter confirm password.")
-//            return false
-//        }
-//        
-//           if(self.password.text! != self.confirmPassword.text!) {
-//               globalAlart(message: "Password doesn't match")
-//            return false
-//        }
-//        
-//        if(self.password.text!.count < 5 || self.password.text!.count > 10 ) {
-//            
-//            globalAlart(message: "Password  length shoud be 5 to 10")
-//            return false
-//        }
-//        
-//        if(self.firstname.text!.isEmpty) {
-//            globalAlart(message: "Please enter first name.")
-//            return false
-//        }
-//        
-//        if(self.lastname.text!.isEmpty) {
-//            globalAlart(message: "Please enter last name.")
-//            return false
-//        }
-//        
-//        if(self.phone.text!.isEmpty) {
-//            globalAlart(message: "Please enter phone.")
-//            return false
-//        }
-//        
-        return true
-    }
-    
+                      if password != confirmPassword {
+                          showAlert(message: "Passwords do not match.")
+                          return
+                      }
 
-    /*
-    // MARK: - Navigation
+                      Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+                          if let error = error {
+                              DispatchQueue.main.async {
+                                  self.showAlert(message: "Error: \(error.localizedDescription)")
+                              }
+                          } else {
+                              // Registration successful
+                              DispatchQueue.main.async {
+                                  self.showAlert(message: "User registered successfully!") {
+                                      self.navigateToLoginScreen()
+                                  }
+                              }
+                          }
+                      }
+                  }
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+                  private func showAlert(message: String, completion: (() -> Void)? = nil) {
+                      let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
+                      alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+                          completion?()
+                      }))
+                      present(alert, animated: true, completion: nil)
+                  }
+                  
+                  private func navigateToLoginScreen() {
+                    
+                      navigationController?.popViewController(animated: true)
+                      
+                     
+                      self.performSegue(withIdentifier: "signUpToLoginSegue", sender: nil)
+                  }
+           
+           private func setBackground() {
+               let gradientLayer = CAGradientLayer()
+               gradientLayer.colors = [UIColor.systemPink.cgColor, UIColor.systemPurple.cgColor]
+               gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+               gradientLayer.endPoint = CGPoint(x: 1, y: 1)
+               gradientLayer.frame = self.view.bounds
+               self.view.layer.insertSublayer(gradientLayer, at: 0)
+           }
+       }
+           
+           extension UITextField {
+               func setLPaddingPoints(_ amount: CGFloat) {
+                   let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: self.frame.height))
+                   self.leftView = paddingView
+                   self.leftViewMode = .always
+               }
+               
+               func setRPaddingPoints(_ amount: CGFloat) {
+                   let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: self.frame.height))
+                   self.rightView = paddingView
+                   self.rightViewMode = .always
+               }
+               
+           }
+              
+           /*
+           // MARK: - Navigation
 
-}
+           // In a storyboard-based application, you will often want to do a little preparation before navigation
+           override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+               // Get the new view controller using segue.destination.
+               // Pass the selected object to the new view controller.
+           }
+           */
+
+

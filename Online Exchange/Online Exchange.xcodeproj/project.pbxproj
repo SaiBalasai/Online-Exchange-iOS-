@@ -7,17 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		51A907E42BFCFEE80029B1AE /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A907E32BFCFEE80029B1AE /* UserModel.swift */; };
 		51B065F32BFC72A200B70A45 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 51B065E72BFC72A100B70A45 /* GoogleService-Info.plist */; };
 		51B065F52BFC72A200B70A45 /* ForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B065E92BFC72A100B70A45 /* ForgotPasswordVC.swift */; };
 		51B065F62BFC72A200B70A45 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B065EA2BFC72A100B70A45 /* HomeVC.swift */; };
 		51B065F72BFC72A200B70A45 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B065EB2BFC72A100B70A45 /* LoginVC.swift */; };
 		51B065F82BFC72A200B70A45 /* FireStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B065EC2BFC72A100B70A45 /* FireStoreManager.swift */; };
-		51B065F92BFC72A200B70A45 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B065ED2BFC72A200B70A45 /* SceneDelegate.swift */; };
 		51B065FA2BFC72A200B70A45 /* SignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B065EE2BFC72A200B70A45 /* SignupVC.swift */; };
 		51B065FB2BFC72A200B70A45 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B065EF2BFC72A200B70A45 /* Extensions.swift */; };
 		51B065FC2BFC72A200B70A45 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B065F02BFC72A200B70A45 /* UserDefaultsManager.swift */; };
 		51B065FD2BFC72A200B70A45 /* initialVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B065F12BFC72A200B70A45 /* initialVC.swift */; };
-		51B065FE2BFC72A200B70A45 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B065F22BFC72A200B70A45 /* ViewController.swift */; };
 		51E734402BFC70CE000A4A8D /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 51E7343F2BFC70CE000A4A8D /* Lottie */; };
 		51E734432BFC7145000A4A8D /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 51E734422BFC7145000A4A8D /* FirebaseAnalytics */; };
 		51E734452BFC7145000A4A8D /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 51E734442BFC7145000A4A8D /* FirebaseAnalyticsOnDeviceConversion */; };
@@ -75,17 +74,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		51A907E32BFCFEE80029B1AE /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		51B065E72BFC72A100B70A45 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		51B065E92BFC72A100B70A45 /* ForgotPasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVC.swift; sourceTree = "<group>"; };
 		51B065EA2BFC72A100B70A45 /* HomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		51B065EB2BFC72A100B70A45 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		51B065EC2BFC72A100B70A45 /* FireStoreManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireStoreManager.swift; sourceTree = "<group>"; };
-		51B065ED2BFC72A200B70A45 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		51B065EE2BFC72A200B70A45 /* SignupVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupVC.swift; sourceTree = "<group>"; };
 		51B065EF2BFC72A200B70A45 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		51B065F02BFC72A200B70A45 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		51B065F12BFC72A200B70A45 /* initialVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = initialVC.swift; sourceTree = "<group>"; };
-		51B065F22BFC72A200B70A45 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		51EFD9652BFC4DFC00724766 /* Online Exchange.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Online Exchange.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		51EFD9682BFC4DFC00724766 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		51EFD96A2BFC4DFC00724766 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -181,19 +179,18 @@
 				51EFD96A2BFC4DFC00724766 /* SceneDelegate.swift */,
 				51B065EE2BFC72A200B70A45 /* SignupVC.swift */,
 				51B065F02BFC72A200B70A45 /* UserDefaultsManager.swift */,
-				51B065F22BFC72A200B70A45 /* ViewController.swift */,
 				51EFD96C2BFC4DFC00724766 /* ViewController.swift */,
 				51EFD96E2BFC4DFC00724766 /* Main.storyboard */,
 				51EFD9712BFC4DFD00724766 /* Assets.xcassets */,
 				51B065EF2BFC72A200B70A45 /* Extensions.swift */,
 				51B065EC2BFC72A100B70A45 /* FireStoreManager.swift */,
+				51A907E32BFCFEE80029B1AE /* UserModel.swift */,
 				51B065E92BFC72A100B70A45 /* ForgotPasswordVC.swift */,
-				51B065E72BFC72A100B70A45 /* GoogleService-Info.plist */,
 				51B065EA2BFC72A100B70A45 /* HomeVC.swift */,
 				51B065F12BFC72A200B70A45 /* initialVC.swift */,
 				51B065EB2BFC72A100B70A45 /* LoginVC.swift */,
-				51B065ED2BFC72A200B70A45 /* SceneDelegate.swift */,
 				51EFD9762BFC4DFD00724766 /* Info.plist */,
+				51B065E72BFC72A100B70A45 /* GoogleService-Info.plist */,
 			);
 			path = "Online Exchange";
 			sourceTree = "<group>";
@@ -386,14 +383,13 @@
 				51B065F82BFC72A200B70A45 /* FireStoreManager.swift in Sources */,
 				51B065F62BFC72A200B70A45 /* HomeVC.swift in Sources */,
 				51B065FA2BFC72A200B70A45 /* SignupVC.swift in Sources */,
+				51A907E42BFCFEE80029B1AE /* UserModel.swift in Sources */,
 				51B065FC2BFC72A200B70A45 /* UserDefaultsManager.swift in Sources */,
 				51B065F72BFC72A200B70A45 /* LoginVC.swift in Sources */,
 				51B065FB2BFC72A200B70A45 /* Extensions.swift in Sources */,
-				51B065FE2BFC72A200B70A45 /* ViewController.swift in Sources */,
 				51EFD9692BFC4DFC00724766 /* AppDelegate.swift in Sources */,
 				51B065F52BFC72A200B70A45 /* ForgotPasswordVC.swift in Sources */,
 				51EFD96B2BFC4DFC00724766 /* SceneDelegate.swift in Sources */,
-				51B065F92BFC72A200B70A45 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
