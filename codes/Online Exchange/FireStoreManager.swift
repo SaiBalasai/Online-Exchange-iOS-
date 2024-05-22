@@ -63,7 +63,7 @@ class FireStoreManager {
         
         query.getDocuments { (querySnapshot, err) in
             
-            print(querySnapshot?.count)
+            print(querySnapshot?.count ?? 0)
             
             if(querySnapshot?.count == 0) {
                 globalAlart(message: "Email id not found!!")

@@ -19,10 +19,7 @@ class LoginVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.view.backgroundColor = UIColor.systemGray6
-        
-
         email.placeholder = "Enter your email"
         password.placeholder = "Enter your password"
         password.isSecureTextEntry = true // Secure password input
@@ -47,14 +44,7 @@ class LoginVC: UIViewController {
         }
     }
     
-    private func showAlert(message: String) {
-        let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        present(alert, animated: true, completion: nil)
-    }
-    
-   
-    
+
     private func setBackground() {
         let gradientLayer = CAGradientLayer()
         gradientLayer.colors = [UIColor.systemPink.cgColor, UIColor.systemPurple.cgColor]
@@ -63,6 +53,13 @@ class LoginVC: UIViewController {
         gradientLayer.frame = self.view.bounds
         self.view.layer.insertSublayer(gradientLayer, at: 0)
     }
+    
+    private func showAlert(message: String) {
+        let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+    
 }
     
     extension UITextField {
