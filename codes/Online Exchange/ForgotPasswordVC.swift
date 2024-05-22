@@ -16,7 +16,7 @@ class ForgotPasswordVC: UIViewController {
         //setupUI()
         self.view.backgroundColor = UIColor.systemGray6
     }
-    //    
+    //
     //    private func setupUI() {
     //        // Email TextField Styling
     //        email.placeholder = "Enter your email address"
@@ -34,9 +34,6 @@ class ForgotPasswordVC: UIViewController {
     //        sendButton.layer.masksToBounds = true
     //        sendButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
     //}
-    
-    
-    
     
     
     @IBOutlet weak var email: UITextField!
@@ -81,22 +78,5 @@ class ForgotPasswordVC: UIViewController {
                self.rightView = paddingView
                self.rightViewMode = .always
            }
-       
-        
-        
-    
-        
-        
-       
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
