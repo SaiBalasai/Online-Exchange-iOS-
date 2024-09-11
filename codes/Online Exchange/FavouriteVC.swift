@@ -11,8 +11,17 @@ class FavouriteVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor.systemGray6
 
         // Do any additional setup after loading the view.
+    }
+    private func setBackground() {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [UIColor.systemPink.cgColor, UIColor.systemPurple.cgColor]
+        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+        gradientLayer.endPoint = CGPoint(x: 1, y: 1)
+        gradientLayer.frame = self.view.bounds
+        self.view.layer.insertSublayer(gradientLayer, at: 0)
     }
     
 

@@ -25,7 +25,27 @@ class LoginVC: UIViewController {
         password.isSecureTextEntry = true // Secure password input
         
     }
-    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "loginToTabBar" {
+//            if let tabBarController = segue.destination as? UITabBarController {
+//                // Set the modal presentation style to full screen
+//                tabBarController.modalPresentationStyle = .fullScreen
+//            }
+//        }
+//    }
+//
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "loginToTabBar" {
+            if let tabBarController = segue.destination as? UITabBarController {
+                // Set the modal presentation style to full screen
+                tabBarController.modalPresentationStyle = .fullScreen
+                
+                // Select the Home tab (assuming it's the first tab with index 0)
+                tabBarController.selectedIndex = 0 // This will show the Home tab
+            }
+        }
+    }
+
     
     @IBAction func onLogin(_ sender: Any) {
         
@@ -39,7 +59,7 @@ class LoginVC: UIViewController {
             if let error = error {
                 self.showAlert(message: "Error: \(error.localizedDescription)")
             } else {
-                self.performSegue(withIdentifier: "loginSuccessSegue", sender: nil)
+                self.performSegue(withIdentifier: "loginToTabBar", sender: nil)
             }
         }
     }

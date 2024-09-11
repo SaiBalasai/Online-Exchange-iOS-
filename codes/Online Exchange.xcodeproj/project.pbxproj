@@ -54,6 +54,10 @@
 		51EFD9802BFC4DFD00724766 /* Online_ExchangeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EFD97F2BFC4DFD00724766 /* Online_ExchangeTests.swift */; };
 		51EFD98A2BFC4DFD00724766 /* Online_ExchangeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EFD9892BFC4DFD00724766 /* Online_ExchangeUITests.swift */; };
 		51EFD98C2BFC4DFD00724766 /* Online_ExchangeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EFD98B2BFC4DFD00724766 /* Online_ExchangeUITestsLaunchTests.swift */; };
+		A96CF3EC2C90F64900E691C2 /* MessageTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96CF3EB2C90F64900E691C2 /* MessageTVC.swift */; };
+		A96CF3EE2C90F6BF00E691C2 /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96CF3ED2C90F6BF00E691C2 /* SettingVC.swift */; };
+		A96CF3F02C90F75100E691C2 /* FavouriteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96CF3EF2C90F75100E691C2 /* FavouriteVC.swift */; };
+		A96CF3F22C910CF800E691C2 /* FavuriteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96CF3F12C910CF800E691C2 /* FavuriteTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +100,10 @@
 		51EFD9852BFC4DFD00724766 /* Online ExchangeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Online ExchangeUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		51EFD9892BFC4DFD00724766 /* Online_ExchangeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Online_ExchangeUITests.swift; sourceTree = "<group>"; };
 		51EFD98B2BFC4DFD00724766 /* Online_ExchangeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Online_ExchangeUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		A96CF3EB2C90F64900E691C2 /* MessageTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTVC.swift; sourceTree = "<group>"; };
+		A96CF3ED2C90F6BF00E691C2 /* SettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
+		A96CF3EF2C90F75100E691C2 /* FavouriteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteVC.swift; sourceTree = "<group>"; };
+		A96CF3F12C910CF800E691C2 /* FavuriteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavuriteTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +189,10 @@
 				51B065F02BFC72A200B70A45 /* UserDefaultsManager.swift */,
 				51EFD96C2BFC4DFC00724766 /* ViewController.swift */,
 				51EFD96E2BFC4DFC00724766 /* Main.storyboard */,
+				A96CF3EF2C90F75100E691C2 /* FavouriteVC.swift */,
+				A96CF3F12C910CF800E691C2 /* FavuriteTableViewController.swift */,
+				A96CF3ED2C90F6BF00E691C2 /* SettingVC.swift */,
+				A96CF3EB2C90F64900E691C2 /* MessageTVC.swift */,
 				51EFD9712BFC4DFD00724766 /* Assets.xcassets */,
 				51B065EF2BFC72A200B70A45 /* Extensions.swift */,
 				51B065EC2BFC72A100B70A45 /* FireStoreManager.swift */,
@@ -379,6 +391,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				51EFD96D2BFC4DFC00724766 /* ViewController.swift in Sources */,
+				A96CF3EE2C90F6BF00E691C2 /* SettingVC.swift in Sources */,
 				51B065FD2BFC72A200B70A45 /* initialVC.swift in Sources */,
 				51B065F82BFC72A200B70A45 /* FireStoreManager.swift in Sources */,
 				51B065F62BFC72A200B70A45 /* HomeVC.swift in Sources */,
@@ -388,6 +401,9 @@
 				51B065F72BFC72A200B70A45 /* LoginVC.swift in Sources */,
 				51B065FB2BFC72A200B70A45 /* Extensions.swift in Sources */,
 				51EFD9692BFC4DFC00724766 /* AppDelegate.swift in Sources */,
+				A96CF3F22C910CF800E691C2 /* FavuriteTableViewController.swift in Sources */,
+				A96CF3F02C90F75100E691C2 /* FavouriteVC.swift in Sources */,
+				A96CF3EC2C90F64900E691C2 /* MessageTVC.swift in Sources */,
 				51B065F52BFC72A200B70A45 /* ForgotPasswordVC.swift in Sources */,
 				51EFD96B2BFC4DFC00724766 /* SceneDelegate.swift in Sources */,
 			);
