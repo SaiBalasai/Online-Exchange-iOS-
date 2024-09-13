@@ -1,8 +1,9 @@
-//
-//  Product.swift
-//  Online Exchange
-//
-//  Created by Kumar Chandu on 9/12/24.
-//
 
+
+// Product.swift
 import Foundation
+
+struct product {
+    let name: String
+    let imageName: String
+}

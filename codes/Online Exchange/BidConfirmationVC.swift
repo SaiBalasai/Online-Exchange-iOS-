@@ -9,11 +9,31 @@ import UIKit
 
 class BidConfirmationVC: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    
+    @IBOutlet weak var productImageView: UIImageView!
+    
+    @IBOutlet weak var productNameLabel: UILabel!
+    
+    
+    @IBOutlet weak var bidAmountLabel: UILabel!
+    
+    @IBOutlet weak var congratulationsLabel: UILabel!
+    
+    
+    var productName: String?
+        var productImage: UIImage?
+        var bidAmount: Int?
 
-        // Do any additional setup after loading the view.
-    }
+        override func viewDidLoad() {
+            super.viewDidLoad()
+            
+            // Set UI elements with data passed from BidVC
+            productNameLabel.text = productName
+            productImageView.image = productImage
+            bidAmountLabel.text = "Bid Amount: $\(bidAmount ?? 0)"
+            congratulationsLabel.text = "Congratulations! You have placed the highest bid for \(productName ?? "this item")."
+                
+        }
     
 
     /*

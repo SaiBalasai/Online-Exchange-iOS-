@@ -977,11 +977,13 @@
                 <navigationController id="m99-Hh-TQZ" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="homekit" catalog="system" id="XBd-zY-Cou"/>
                     <navigationItem key="navigationItem" id="jHZ-K5-N5u"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="2OM-OK-aFA">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="BSA-Bl-x1P">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="r9L-WC-7T5" kind="relationship" relationship="rootViewController" id="GZP-8F-ryE"/>
                     </connections>
@@ -1430,12 +1432,8 @@
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
-                                <imageView key="backgroundView" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Apple-iPhone-16-hero-240909_inline.jpg.medium_2x" id="9lL-HM-IZU">
-                                    <rect key="frame" x="0.0" y="0.0" width="373" height="798"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                </imageView>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="" id="r1e-t4-nf5" customClass="items" customModule="Online_Exchange" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ProductCell" id="r1e-t4-nf5" customClass="ProductCell" customModule="Online_Exchange" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="170" height="220"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="GOM-7s-BdL">
@@ -1500,6 +1498,10 @@
                                                 <constraint firstAttribute="bottom" secondItem="wxi-8s-2We" secondAttribute="bottom" constant="5" id="wjj-Vt-Dgc"/>
                                             </constraints>
                                         </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="itemImage" destination="II7-qb-j2q" id="qEe-0Y-Z7S"/>
+                                            <outlet property="itemName" destination="U2a-65-5Ay" id="qVh-Pz-ERv"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HeaderView" id="NNJ-Xv-d9a" customClass="headerView">
@@ -1537,11 +1539,12 @@
                     <navigationItem key="navigationItem" title="Home" id="cPt-xa-Q7v"/>
                     <connections>
                         <outlet property="collectionview" destination="b1Z-hv-XMg" id="Z4t-r2-kjU"/>
+                        <segue destination="DIO-zd-PGi" kind="show" identifier="showBidScreen" id="oKm-m0-Ng8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3no-eg-9yo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7521" y="-754"/>
+            <point key="canvasLocation" x="7519.8473282442746" y="-754.22535211267609"/>
         </scene>
         <!--Favourites-->
         <scene sceneID="Jwo-q7-3NV">
@@ -1703,6 +1706,113 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uH6-52-okm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="10011" y="-430"/>
+        </scene>
+        <!--BidVC-->
+        <scene sceneID="pVZ-ff-fbZ">
+            <objects>
+                <viewController id="DIO-zd-PGi" customClass="BidVC" customModule="Online_Exchange" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="shi-1f-MrK">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YvW-YE-kVG">
+                                <rect key="frame" x="76" y="136" width="241" height="191"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PuB-9w-QMs">
+                                <rect key="frame" x="83" y="523" width="227" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0AY-mE-aq6">
+                                <rect key="frame" x="90" y="641" width="227" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Button"/>
+                                <connections>
+                                    <action selector="placeBidTapped:" destination="DIO-zd-PGi" eventType="touchUpInside" id="pAF-TV-vYP"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Srk-NL-Ffe">
+                                <rect key="frame" x="90" y="442" width="220" height="55"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fps-BJ-V09">
+                                <rect key="frame" x="90" y="362" width="227" height="49"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="gFR-a4-LE6"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="dHQ-Mo-dhg"/>
+                    <connections>
+                        <outlet property="bidAmountTextField" destination="PuB-9w-QMs" id="ZUt-4Z-7OJ"/>
+                        <outlet property="currentBidLabel" destination="Srk-NL-Ffe" id="WcU-9o-771"/>
+                        <outlet property="placeBidButton" destination="0AY-mE-aq6" id="tQr-m6-oUJ"/>
+                        <outlet property="productImageView" destination="YvW-YE-kVG" id="VWr-sh-1A0"/>
+                        <outlet property="productNameLabel" destination="Fps-BJ-V09" id="4Zj-DG-v2S"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8Z1-Hm-ETW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8335.1145038167942" y="-1087.323943661972"/>
+        </scene>
+        <!--Bid ConfirmationVC-->
+        <scene sceneID="lon-j4-HEG">
+            <objects>
+                <viewController storyboardIdentifier="BidConfirmationVC" id="JuQ-Ee-0aY" customClass="BidConfirmationVC" customModule="Online_Exchange" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="SCH-TX-pWU">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GKo-t3-lmY">
+                                <rect key="frame" x="76" y="94" width="241" height="200"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X6m-9f-Bhw">
+                                <rect key="frame" x="76" y="320" width="227" height="49"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ypo-ad-Zay">
+                                <rect key="frame" x="83" y="402" width="227" height="49"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hT4-bZ-yxb">
+                                <rect key="frame" x="41" y="484" width="312" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="yws-rE-14V"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="fii-UW-5aE"/>
+                    <connections>
+                        <outlet property="bidAmountLabel" destination="ypo-ad-Zay" id="Xrn-rf-TJR"/>
+                        <outlet property="congratulationsLabel" destination="hT4-bZ-yxb" id="pcL-7I-u6j"/>
+                        <outlet property="productImageView" destination="GKo-t3-lmY" id="Y3g-7D-46e"/>
+                        <outlet property="productNameLabel" destination="X6m-9f-Bhw" id="wzP-QO-fSy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eny-2Q-wiA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="9409.9236641221378" y="-1087.323943661972"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

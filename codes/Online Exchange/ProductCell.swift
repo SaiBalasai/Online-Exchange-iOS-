@@ -9,4 +9,10 @@ import UIKit
 
 class ProductCell: UICollectionViewCell {
     
+    
+    @IBOutlet weak var wishlistButton: UIButton!
+    @IBOutlet weak var itemImage: UIImageView!
+    
+    @IBOutlet weak var itemName: UILabel!
+    
 }
