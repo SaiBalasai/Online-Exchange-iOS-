@@ -85,4 +85,5 @@ extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegate, UICollec
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         performSegue(withIdentifier: "showBidScreen", sender: self)
     }
+    
 }

@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseFirestore
 
 class SettingVC: UIViewController {
 
@@ -18,30 +20,90 @@ class SettingVC: UIViewController {
     @IBOutlet weak var contactInfo: UITextField!
     
     @IBAction func onUpdate(_ sender: UIButton) {
+        
+        guard let userId = Auth.auth().currentUser?.uid else {
+            print("User not logged in")
+            return
+        }
+        
+        let updatedData = [
+            "firstname": firstName.text ?? "",
+            "lastname": lastName.text ?? "",
+            "email": email.text ?? "",
+            "phone": contactInfo.text ?? ""
+        ]
+        
+        db.collection("Users").document(userId).updateData(updatedData) { error in
+            if let error = error {
+                print("Error updating document: \(error.localizedDescription)")
+                self.showAlert(message: "Error updating profile")
+            } else {
+                self.showAlert(message: "Profile updated successfully")
+            }
+        }
+        
+        
     }
+    private func showAlert(message: String) {
+           let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
+           alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+           present(alert, animated: true, completion: nil)
+       }
+    
     
     @IBAction func onLogout(_ sender: UIButton) {
-    }
+        
+        do {
+                   try Auth.auth().signOut()
+                   // Navigate to login screen
+                   self.performSegue(withIdentifier: "logoutToLoginSegue", sender: self)
+               } catch let signOutError as NSError {
+                   print("Error signing out: %@", signOutError)
+               }
+           }
+           
+//           private func showAlert(message: String) {
+//               let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
+//               alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+//               present(alert, animated: true, completion: nil)
+//        
+//    }
     
     
-    var password = ""
-    
-    
-    
-    
+
+    private var db: Firestore!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.systemGray6
         
-//        styleTextField(email)
-//               styleTextField(firstName)
-//               styleTextField(lastName)
-//               styleTextField(contactInfo)
-
-        // Do any additional setup after loading the view.
+        // Initialize Firestore
+        db = Firestore.firestore()
+        
+        // Fetch user details
+        fetchUserDetails()
     }
     
+    private func fetchUserDetails() {
+        guard let userId = Auth.auth().currentUser?.uid else {
+            print("User not logged in")
+            return
+        }
+        
+        db.collection("Users").document(userId).getDocument { (document, error) in
+            if let error = error {
+                print("Error fetching user details: \(error.localizedDescription)")
+            } else if let document = document, document.exists {
+                let data = document.data()
+                self.firstName.text = data?["firstname"] as? String ?? ""
+                self.lastName.text = data?["lastname"] as? String ?? ""
+                self.email.text = data?["email"] as? String ?? ""
+                self.contactInfo.text = data?["phone"] as? String ?? ""
+            } else {
+                print("Document does not exist")
+            }
+        }
+    }
     private func setBackground() {
         let gradientLayer = CAGradientLayer()
         gradientLayer.colors = [UIColor.systemPink.cgColor, UIColor.systemPurple.cgColor]
