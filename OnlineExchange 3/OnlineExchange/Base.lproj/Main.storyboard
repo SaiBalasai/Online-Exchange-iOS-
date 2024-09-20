@@ -25,7 +25,6 @@
                                             <constraint firstAttribute="width" constant="50" id="4JB-jV-j2i"/>
                                             <constraint firstAttribute="height" constant="50" id="Nop-n1-GMr"/>
                                         </constraints>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="chevron.backward" catalog="system">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -35,7 +34,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemGray4Color"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="90" id="8Xf-VH-I5X"/>
                                     <constraint firstAttribute="bottom" secondItem="LBR-31-Jax" secondAttribute="bottom" id="Xly-bg-XBV"/>
@@ -71,7 +70,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ht6-g5-Mvb" customClass="ButtonLayerSetup" customModule="OnlineExchange" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="310" height="50"/>
-                                        <color key="backgroundColor" red="0.3686274886" green="0.75686275960000005" blue="0.50588238240000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" systemColor="tintColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="x3L-PW-a6K"/>
                                             <constraint firstAttribute="width" constant="150" id="zfA-oR-6Sa"/>
@@ -98,7 +97,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jGb-BL-a9G" customClass="ButtonLayerSetup" customModule="OnlineExchange" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="80" width="310" height="50"/>
-                                        <color key="backgroundColor" red="0.3686274886" green="0.75686275960000005" blue="0.50588238240000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" systemColor="tintColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="ReT-MB-GOZ"/>
                                         </constraints>
@@ -121,7 +120,7 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="uAb-le-FBV"/>
-                        <color key="backgroundColor" systemColor="systemGray4Color"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="lTl-UL-5BN" firstAttribute="top" secondItem="XII-kc-2PU" secondAttribute="top" id="5OP-EV-t6H"/>
                             <constraint firstItem="qDe-HX-xTZ" firstAttribute="top" secondItem="OiG-vX-qwR" secondAttribute="bottom" constant="50" id="Jg0-CO-gs6"/>
@@ -249,7 +248,7 @@
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KMb-SM-XLy" customClass="ButtonLayerSetup" customModule="OnlineExchange" customModuleProvider="target">
                                                         <rect key="frame" x="104" y="-5" width="150" height="50"/>
-                                                        <color key="backgroundColor" red="0.3686274886" green="0.75686275960000005" blue="0.50588238240000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <color key="backgroundColor" systemColor="tintColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="6iz-Up-SBd"/>
                                                             <constraint firstAttribute="width" constant="150" id="OTe-hb-hvu"/>
@@ -314,7 +313,7 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="snq-1I-qed"/>
-                        <color key="backgroundColor" systemColor="systemGray4Color"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="N1A-TM-IbN" firstAttribute="top" secondItem="wUU-3V-Sd8" secondAttribute="bottom" constant="20" id="46a-QG-FrC"/>
                             <constraint firstItem="N1A-TM-IbN" firstAttribute="trailing" secondItem="snq-1I-qed" secondAttribute="trailing" id="GGq-fh-eSg"/>
@@ -352,7 +351,6 @@
                                             <constraint firstAttribute="width" constant="50" id="URs-Lk-3WO"/>
                                             <constraint firstAttribute="height" constant="50" id="dHE-1N-M7W"/>
                                         </constraints>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="chevron.backward" catalog="system">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -362,7 +360,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemGray4Color"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="lmq-te-zer" firstAttribute="leading" secondItem="AEf-mt-sJ7" secondAttribute="leading" constant="20" id="XPw-sh-hgV"/>
                                     <constraint firstAttribute="bottom" secondItem="lmq-te-zer" secondAttribute="bottom" id="aLU-8M-tmt"/>
@@ -519,7 +517,7 @@
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sn2-IJ-uZg" customClass="ButtonLayerSetup" customModule="OnlineExchange" customModuleProvider="target">
                                                         <rect key="frame" x="104" y="45" width="150" height="50"/>
-                                                        <color key="backgroundColor" red="0.3686274886" green="0.75686275960000005" blue="0.50588238240000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <color key="backgroundColor" systemColor="tintColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="keQ-xv-GAb"/>
                                                             <constraint firstAttribute="width" constant="150" id="nKN-lT-SNW"/>
@@ -538,7 +536,7 @@
                                                         </connections>
                                                     </button>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemGray4Color"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="0y4-bo-4fa"/>
                                                     <constraint firstItem="Sn2-IJ-uZg" firstAttribute="centerX" secondItem="szQ-F5-X8q" secondAttribute="centerX" id="eDV-7A-70v"/>
@@ -568,7 +566,7 @@
                                                         </connections>
                                                     </button>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemGray4Color"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="bottom" secondItem="hMv-W8-NJb" secondAttribute="bottom" constant="5" id="D4v-P1-ITY"/>
                                                     <constraint firstAttribute="height" constant="60" id="PR0-kd-VeB"/>
@@ -588,7 +586,7 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="dBL-nU-8Kv"/>
-                        <color key="backgroundColor" systemColor="systemGray4Color"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="AEf-mt-sJ7" firstAttribute="trailing" secondItem="dBL-nU-8Kv" secondAttribute="trailing" id="HoN-GS-STs"/>
                             <constraint firstItem="Jfh-rZ-wty" firstAttribute="trailing" secondItem="dBL-nU-8Kv" secondAttribute="trailing" id="Nb8-7f-SJd"/>
@@ -714,7 +712,7 @@
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CC6-VC-9L3" customClass="ButtonLayerSetup" customModule="OnlineExchange" customModuleProvider="target">
                                                                 <rect key="frame" x="54" y="0.0" width="250" height="50"/>
-                                                                <color key="backgroundColor" red="0.3686274886" green="0.75686275960000005" blue="0.50588238240000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                <color key="backgroundColor" systemColor="tintColor"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="50" id="ewW-ZM-WkX"/>
                                                                     <constraint firstAttribute="width" constant="250" id="rIP-pL-cMy"/>
@@ -733,7 +731,7 @@
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RHw-VV-a6g" customClass="ButtonLayerSetup" customModule="OnlineExchange" customModuleProvider="target">
                                                                 <rect key="frame" x="54" y="70" width="250" height="50"/>
-                                                                <color key="backgroundColor" red="0.3686274886" green="0.75686275960000005" blue="0.50588238240000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                <color key="backgroundColor" systemColor="tintColor"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="50" id="A4E-5P-tYf"/>
                                                                     <constraint firstAttribute="width" constant="250" id="LCV-Xt-Bp9"/>
@@ -756,7 +754,7 @@
                                                         </subviews>
                                                     </stackView>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemGray4Color"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="bottom" secondItem="26e-T8-oAi" secondAttribute="bottom" id="37G-BE-mDW"/>
                                                     <constraint firstAttribute="trailing" secondItem="26e-T8-oAi" secondAttribute="trailing" id="Eze-PD-yxc"/>
@@ -781,7 +779,6 @@
                                             <constraint firstAttribute="height" constant="50" id="sjo-2I-U3r"/>
                                             <constraint firstAttribute="width" constant="50" id="znW-j0-6jO"/>
                                         </constraints>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="chevron.backward" catalog="system">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -815,7 +812,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hYB-Fa-2Hx"/>
-                        <color key="backgroundColor" systemColor="systemGray4Color"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="AM9-tR-XRO" firstAttribute="trailing" secondItem="hYB-Fa-2Hx" secondAttribute="trailing" id="7WJ-VX-5Oa"/>
                             <constraint firstItem="AM9-tR-XRO" firstAttribute="leading" secondItem="hYB-Fa-2Hx" secondAttribute="leading" id="7jh-dB-T4E"/>
@@ -905,7 +902,7 @@
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vvP-fl-eOt" customClass="ButtonLayerSetup" customModule="OnlineExchange" customModuleProvider="target">
                                                                 <rect key="frame" x="54" y="0.0" width="250" height="50"/>
-                                                                <color key="backgroundColor" red="0.3686274886" green="0.75686275960000005" blue="0.50588238240000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                <color key="backgroundColor" systemColor="tintColor"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="50" id="Dve-M7-eVX"/>
                                                                     <constraint firstAttribute="width" constant="250" id="aei-mV-V9R"/>
@@ -928,7 +925,7 @@
                                                         </subviews>
                                                     </stackView>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemGray4Color"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstItem="eh1-lX-gcH" firstAttribute="leading" secondItem="JKt-m5-heT" secondAttribute="leading" id="2fx-3A-anE"/>
                                                     <constraint firstAttribute="trailing" secondItem="eh1-lX-gcH" secondAttribute="trailing" id="8Wg-KY-ecd"/>
@@ -953,7 +950,7 @@
                                             <constraint firstAttribute="width" constant="50" id="XLU-PT-gFC"/>
                                             <constraint firstAttribute="height" constant="50" id="e5A-ev-vt0"/>
                                         </constraints>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" systemColor="tintColor"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="chevron.backward" catalog="system">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -987,7 +984,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="dHU-N5-64l"/>
-                        <color key="backgroundColor" systemColor="systemGray4Color"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="irI-UG-Yzp" firstAttribute="leading" secondItem="dHU-N5-64l" secondAttribute="leading" id="Ba3-9F-Tml"/>
                             <constraint firstItem="OxC-Tq-P8k" firstAttribute="top" secondItem="irI-UG-Yzp" secondAttribute="bottom" constant="50" id="Oew-Kp-Cib"/>
@@ -1022,7 +1019,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JZD-zE-66H" customClass="ButtonLayerSetup" customModule="OnlineExchange" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="250" height="50"/>
-                                        <color key="backgroundColor" red="0.3686274886" green="0.75686275960000005" blue="0.50588238240000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" systemColor="tintColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="cFC-Ld-KwD"/>
                                             <constraint firstAttribute="width" constant="250" id="lW0-Z7-DSV"/>
@@ -1044,7 +1041,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vaE-KF-VdJ" customClass="ButtonLayerSetup" customModule="OnlineExchange" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="80" width="250" height="50"/>
-                                        <color key="backgroundColor" red="0.3686274886" green="0.75686275960000005" blue="0.50588238240000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" systemColor="tintColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="250" id="dUz-fc-fwH"/>
                                             <constraint firstAttribute="height" constant="50" id="hKa-6C-RXv"/>
@@ -1066,7 +1063,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UJE-h1-LwQ" customClass="ButtonLayerSetup" customModule="OnlineExchange" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="160" width="250" height="50"/>
-                                        <color key="backgroundColor" red="0.3686274886" green="0.75686275960000005" blue="0.50588238240000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" systemColor="tintColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="250" id="XYc-Fi-vpP"/>
                                             <constraint firstAttribute="height" constant="50" id="lVA-7R-gmr"/>
@@ -1108,7 +1105,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="WfI-xA-Uob"/>
-                        <color key="backgroundColor" systemColor="systemGray4Color"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="yYg-92-byw" secondAttribute="trailing" id="DQs-dR-AJD"/>
                             <constraint firstItem="yYg-92-byw" firstAttribute="top" secondItem="Ktx-DJ-5SG" secondAttribute="top" id="Eel-6Y-RRk"/>
@@ -1142,7 +1139,6 @@
                                             <constraint firstAttribute="height" constant="50" id="8Sq-VG-NR5"/>
                                             <constraint firstAttribute="width" constant="30" id="SBZ-P1-0TV"/>
                                         </constraints>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="chevron.backward" catalog="system">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1282,7 +1278,7 @@
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QYh-eh-FpT" customClass="ButtonLayerSetup" customModule="OnlineExchange" customModuleProvider="target">
                                                         <rect key="frame" x="238" y="5" width="120" height="40"/>
-                                                        <color key="backgroundColor" red="0.3686274886" green="0.75686275960000005" blue="0.50588238240000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <color key="backgroundColor" systemColor="tintColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="Gze-t3-VxF"/>
                                                             <constraint firstAttribute="width" constant="120" id="UNH-DL-OCa"/>
@@ -1346,7 +1342,7 @@
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zOm-fH-uvi" customClass="ButtonLayerSetup" customModule="OnlineExchange" customModuleProvider="target">
                                                         <rect key="frame" x="79" y="5" width="200" height="50"/>
-                                                        <color key="backgroundColor" red="0.3686274886" green="0.75686275960000005" blue="0.50588238240000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <color key="backgroundColor" systemColor="tintColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="kwn-yx-bPs"/>
                                                             <constraint firstAttribute="width" constant="200" id="vP5-O0-BkH"/>
@@ -1384,7 +1380,7 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Y8A-b1-38o"/>
-                        <color key="backgroundColor" systemColor="systemGray4Color"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="I2W-Se-nd7" firstAttribute="top" secondItem="jff-eG-SWP" secondAttribute="top" id="dTN-ah-uLu"/>
                             <constraint firstItem="vdD-kC-qHl" firstAttribute="leading" secondItem="Y8A-b1-38o" secondAttribute="leading" id="jgd-l6-Mix"/>
@@ -1418,7 +1414,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="1Xp-eh-pHA">
                                 <rect key="frame" x="15" y="100" width="393" height="720"/>
-                                <color key="backgroundColor" systemColor="systemGray4Color"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TableViewCell" rowHeight="155" id="wFA-gr-mc8" customClass="TableViewCell" customModule="OnlineExchange" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="393" height="155"/>
@@ -1487,7 +1483,7 @@
                                                         </view>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PIr-AA-TLW" customClass="ButtonLayerSetup" customModule="OnlineExchange" customModuleProvider="target">
                                                             <rect key="frame" x="318" y="57.666666666666657" width="70" height="35"/>
-                                                            <color key="backgroundColor" red="0.3686274886" green="0.75686275960000005" blue="0.50588238240000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            <color key="backgroundColor" systemColor="tintColor"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="70" id="0Uu-ys-3fE"/>
                                                                 <constraint firstAttribute="height" constant="35" id="GR6-CT-w0L"/>
@@ -1503,7 +1499,7 @@
                                                             </userDefinedRuntimeAttributes>
                                                         </button>
                                                     </subviews>
-                                                    <color key="backgroundColor" systemColor="systemGray4Color"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstItem="PIr-AA-TLW" firstAttribute="centerY" secondItem="0md-oC-YOv" secondAttribute="centerY" id="1MV-gr-XAt"/>
                                                         <constraint firstItem="JkZ-BN-24M" firstAttribute="top" secondItem="nEK-98-gMr" secondAttribute="bottom" constant="10" id="6ds-Zh-K5m"/>
@@ -1548,7 +1544,7 @@
                                             <constraint firstAttribute="height" constant="50" id="UwM-gf-h3B"/>
                                             <constraint firstAttribute="width" constant="50" id="Xu8-uy-Y0S"/>
                                         </constraints>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" systemColor="tintColor"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="chevron.backward" catalog="system">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1582,7 +1578,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="cNv-f1-eei"/>
-                        <color key="backgroundColor" systemColor="systemGray4Color"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="cNv-f1-eei" firstAttribute="trailing" secondItem="1Xp-eh-pHA" secondAttribute="trailing" constant="15" id="C7T-TO-3cn"/>
                             <constraint firstItem="em5-LG-Sb8" firstAttribute="top" secondItem="ian-5I-WfO" secondAttribute="top" id="PG0-df-qeP"/>
@@ -1621,7 +1617,6 @@
                                             <constraint firstAttribute="width" constant="30" id="htr-1L-TsA"/>
                                             <constraint firstAttribute="height" constant="50" id="twX-wB-wSk"/>
                                         </constraints>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="chevron.backward" catalog="system">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1783,7 +1778,7 @@
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lor-np-Ca1" customClass="ButtonLayerSetup" customModule="OnlineExchange" customModuleProvider="target">
                                                         <rect key="frame" x="79" y="45" width="200" height="50"/>
-                                                        <color key="backgroundColor" red="0.3686274886" green="0.75686275960000005" blue="0.50588238240000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <color key="backgroundColor" systemColor="tintColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="200" id="POl-OZ-s89"/>
                                                             <constraint firstAttribute="height" constant="50" id="ps1-Ex-dh2"/>
@@ -1821,7 +1816,7 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="0no-at-0bG"/>
-                        <color key="backgroundColor" systemColor="systemGray4Color"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="4fr-yx-hWG" firstAttribute="leading" secondItem="0no-at-0bG" secondAttribute="leading" id="3DY-hm-yYx"/>
                             <constraint firstItem="Yp5-rV-MTz" firstAttribute="trailing" secondItem="0no-at-0bG" secondAttribute="trailing" id="ANL-HK-7fo"/>
@@ -1857,7 +1852,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C5H-8a-dhu" customClass="ButtonLayerSetup" customModule="OnlineExchange" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="250" height="50"/>
-                                        <color key="backgroundColor" red="0.3686274886" green="0.75686275960000005" blue="0.50588238240000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" systemColor="tintColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="250" id="YJr-0c-O8t"/>
                                             <constraint firstAttribute="height" constant="50" id="vKU-oj-Kzo"/>
@@ -1879,7 +1874,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Ri-39-Qm2" customClass="ButtonLayerSetup" customModule="OnlineExchange" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="80" width="250" height="50"/>
-                                        <color key="backgroundColor" red="0.3686274886" green="0.75686275960000005" blue="0.50588238240000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" systemColor="tintColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="250" id="1vk-Or-tKd"/>
                                             <constraint firstAttribute="height" constant="50" id="BKk-I0-E19"/>
@@ -1898,7 +1893,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tfD-Md-W1E" customClass="ButtonLayerSetup" customModule="OnlineExchange" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="160" width="250" height="50"/>
-                                        <color key="backgroundColor" red="0.3686274886" green="0.75686275960000005" blue="0.50588238240000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" systemColor="tintColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="gdV-II-cS4"/>
                                             <constraint firstAttribute="width" constant="250" id="swf-ah-BhE"/>
@@ -1940,7 +1935,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="HrE-fo-vKP"/>
-                        <color key="backgroundColor" systemColor="systemGray4Color"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="c7o-mt-9Q7" secondAttribute="trailing" id="Hon-dr-Itc"/>
                             <constraint firstItem="1kk-IT-ft9" firstAttribute="leading" secondItem="HrE-fo-vKP" secondAttribute="leading" constant="40" id="IdE-b6-JSf"/>
@@ -1967,7 +1962,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="eoT-9g-dEO">
                                 <rect key="frame" x="15" y="100" width="393" height="720"/>
-                                <color key="backgroundColor" systemColor="systemGray4Color"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TableViewCell" rowHeight="200" id="Lfu-1h-hOe" customClass="TableViewCell" customModule="OnlineExchange" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="393" height="200"/>
@@ -2131,7 +2126,7 @@
                                             <constraint firstAttribute="width" constant="50" id="XIo-SX-6GI"/>
                                             <constraint firstAttribute="height" constant="50" id="wuf-4J-UXO"/>
                                         </constraints>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" systemColor="tintColor"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="chevron.backward" catalog="system">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2165,7 +2160,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Ifh-fT-3UM"/>
-                        <color key="backgroundColor" systemColor="systemGray4Color"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="eoT-9g-dEO" firstAttribute="top" secondItem="7Uj-1Z-Wep" secondAttribute="bottom" constant="10" id="5e7-vi-vOt"/>
                             <constraint firstItem="eoT-9g-dEO" firstAttribute="leading" secondItem="Ifh-fT-3UM" secondAttribute="leading" constant="15" id="MBN-sA-I5U"/>
@@ -2223,17 +2218,15 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uqp-oR-BBs">
                                                 <rect key="frame" x="129" y="88.666666666666629" width="112" height="50"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" systemColor="tintColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="C8I-7x-Oo5"/>
                                                 </constraints>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="Get Started">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
-                                                <buttonConfiguration key="configuration" style="plain" title="Get Started" cornerStyle="fixed">
-                                                    <backgroundConfiguration key="background">
-                                                        <color key="backgroundColor" systemColor="systemGreenColor"/>
-                                                    </backgroundConfiguration>
+                                                <buttonConfiguration key="configuration" style="plain" title="Get Started">
                                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </buttonConfiguration>
                                                 <userDefinedRuntimeAttributes>
@@ -2258,9 +2251,16 @@
                                     <constraint firstAttribute="trailing" secondItem="lca-7p-CwH" secondAttribute="trailing" id="Wun-Mp-hDe"/>
                                 </constraints>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Online Exchange" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8fa-4A-bsG">
+                                <rect key="frame" x="87" y="47" width="216" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Onh-jT-S9I"/>
-                        <color key="backgroundColor" systemColor="systemGray4Color"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="fSU-0C-hfe" firstAttribute="top" secondItem="twx-D3-bHc" secondAttribute="bottom" constant="20" id="5h0-Pn-LCa"/>
                             <constraint firstAttribute="trailing" secondItem="fSU-0C-hfe" secondAttribute="trailing" constant="10" id="OH6-j1-qzN"/>
@@ -2278,7 +2278,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oqq-IO-DGB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-102" y="3"/>
+            <point key="canvasLocation" x="-103.07692307692308" y="2.8436018957345972"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="OsI-Am-qC8">
@@ -2309,11 +2309,8 @@
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
-        <systemColor name="systemGray4Color">
-            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="tintColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
