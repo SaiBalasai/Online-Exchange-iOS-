@@ -57,3 +57,4 @@ struct ProductModel {
         self.productDetail = productDetail
     }
 }
+
