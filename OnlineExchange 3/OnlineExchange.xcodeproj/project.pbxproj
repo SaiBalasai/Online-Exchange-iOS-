@@ -47,6 +47,8 @@
 		8055C5DE2C9AAB3E00420E0F /* BidRequestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8055C5DD2C9AAB3E00420E0F /* BidRequestVC.swift */; };
 		A901CC592CA7424C0042B4AA /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = A901CC582CA7424C0042B4AA /* Lottie */; };
 		A901CC5B2CA7428F0042B4AA /* initialVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A901CC5A2CA7428F0042B4AA /* initialVC.swift */; };
+		A901CC5D2CAA4DA90042B4AA /* chattvc.swift in Sources */ = {isa = PBXBuildFile; fileRef = A901CC5C2CAA4DA90042B4AA /* chattvc.swift */; };
+		A901CC5F2CAA4F020042B4AA /* ChatMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A901CC5E2CAA4F020042B4AA /* ChatMessageCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,6 +85,8 @@
 		8055C5D62C99AFF800420E0F /* BidProductVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BidProductVC.swift; sourceTree = "<group>"; };
 		8055C5DD2C9AAB3E00420E0F /* BidRequestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BidRequestVC.swift; sourceTree = "<group>"; };
 		A901CC5A2CA7428F0042B4AA /* initialVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = initialVC.swift; sourceTree = "<group>"; };
+		A901CC5C2CAA4DA90042B4AA /* chattvc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chattvc.swift; sourceTree = "<group>"; };
+		A901CC5E2CAA4F020042B4AA /* ChatMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +136,8 @@
 				8055C57E2C95F21300420E0F /* SceneDelegate.swift */,
 				8055C5A52C95F25500420E0F /* GoogleService-Info.plist */,
 				8055C5822C95F21300420E0F /* Main.storyboard */,
+				A901CC5E2CAA4F020042B4AA /* ChatMessageCell.swift */,
+				A901CC5C2CAA4DA90042B4AA /* chattvc.swift */,
 				A901CC5A2CA7428F0042B4AA /* initialVC.swift */,
 				8055C5852C95F21500420E0F /* Assets.xcassets */,
 				8055C5872C95F21500420E0F /* LaunchScreen.storyboard */,
@@ -321,7 +327,9 @@
 				8055C57D2C95F21300420E0F /* AppDelegate.swift in Sources */,
 				8055C5B52C95F25500420E0F /* Extensions.swift in Sources */,
 				8055C5B42C95F25500420E0F /* DesignableView.swift in Sources */,
+				A901CC5D2CAA4DA90042B4AA /* chattvc.swift in Sources */,
 				8055C5A82C95F25500420E0F /* UserDefaultsManager.swift in Sources */,
+				A901CC5F2CAA4F020042B4AA /* ChatMessageCell.swift in Sources */,
 				8055C5C62C96C51D00420E0F /* SignupModel.swift in Sources */,
 				A901CC5B2CA7428F0042B4AA /* initialVC.swift in Sources */,
 				8055C5B22C95F25500420E0F /* ButtonExtension.swift in Sources */,
