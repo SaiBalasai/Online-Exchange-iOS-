@@ -10,30 +10,8 @@ class LoginVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //setupLoginButton()
-            }
-            
-            private func setupLoginButton() {
-                // Set the button's background color
-                loginButton.backgroundColor = UIColor.systemGreen
-                
-                // Set the button's title color
-                loginButton.setTitleColor(.white, for: .normal)
-                
-                // Set the corner radius to make the button capsule-shaped
-                loginButton.layer.cornerRadius = loginButton.frame.height / 2
-                
-                // Optional: Set border width and color
-               // loginButton.layer.borderWidth = 1
-               // loginButton.layer.borderColor = UIColor.white.cgColor
-                
-                // Ensure the button has a fixed height if necessary
-                loginButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
-            }
-    
-    @IBOutlet weak var loginButton: ButtonLayerSetup!
-    
-    
+
+    }
     
     @IBAction func onLogin(_ sender: Any) {
             if(email.text!.isEmpty) {

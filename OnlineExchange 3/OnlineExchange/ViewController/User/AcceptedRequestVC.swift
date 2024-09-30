@@ -1,8 +1,13 @@
-
+//
+//  AcceptedRequestVC.swift
+//  SmartInventory
+//
+//  Created by Macbook-Pro on 18/09/24.
+//
 
 import UIKit
 
-class BidRequestVC: BaseViewController,UITableViewDelegate, UITableViewDataSource {
+class AcceptedRequestVC: BaseViewController,UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
     var productsRequest: [ProductModel] = []
 
@@ -18,7 +23,7 @@ class BidRequestVC: BaseViewController,UITableViewDelegate, UITableViewDataSourc
     }
 
     func fetchProductData() {
-        FireStoreManager.shared.getBidRequests(forUserId: UserDefaultsManager.shared.getDocumentId()) { [weak self] fetchedProducts, error in
+        FireStoreManager.shared.getAllRequestProductRecord(forUserId: UserDefaultsManager.shared.getDocumentId(), collectionStatus: "BidAcceptedByAdminOfUser") { [weak self] fetchedProducts, error in
               if let error = error {
                   print("Error fetching products: \(error.localizedDescription)")
               } else if let fetchedProducts = fetchedProducts {
@@ -31,7 +36,7 @@ class BidRequestVC: BaseViewController,UITableViewDelegate, UITableViewDataSourc
 }
 
 
-extension BidRequestVC {
+extension AcceptedRequestVC {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -53,50 +58,22 @@ extension BidRequestVC {
         let imageUrl = data.productImageUrl
 
         cell.productImage.sd_setImage(with: URL(string: imageUrl), placeholderImage: UIImage(named: "logo"))
+        
 
-        cell.acceptBtn.tag = indexPath.row
-        cell.rejectBtn.tag = indexPath.row
-        cell.acceptBtn.addTarget(self, action: #selector(self.acceptAppointmentStatus(_:)), for: .touchUpInside)
-        cell.rejectBtn.addTarget(self, action: #selector(self.rejectAppointmentStatus(_:)), for: .touchUpInside)
-
+        
         return cell
     }
     
-    @objc func acceptAppointmentStatus(_ sender: UIButton) {
-        let request = self.productsRequest[sender.tag]
-        self.updateAcceptRequest(status: "Accept", requestData: request)
-    }
-    
-    @objc func rejectAppointmentStatus(_ sender: UIButton) {
-        let request = self.productsRequest[sender.tag]
-        self.rejectUpdateRequest(status: "Reject", requestData: request)
-    }
-    
-    
-    func updateAcceptRequest(status: String, requestData: ProductModel!){
-        FireStoreManager.shared.acceptProductRequest(request: requestData) { success in
-                        if success {
-                            showAlerOnTop(message: "Product Accepted!!")
-                            self.navigationController?.popViewController(animated: true)
-                        }
-                    }
-    }
-    
-    func rejectUpdateRequest(status: String, requestData: ProductModel!){
-        FireStoreManager.shared.rejectProductRequest(request: requestData) { success in
-                        if success {
-                            showAlerOnTop(message: "Product Rejected!!")
-                            self.navigationController?.popViewController(animated: true)
-                        }
-                    }
-    }
-    
+  
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
+        return 155
         
     }
+    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+      
     }
 }

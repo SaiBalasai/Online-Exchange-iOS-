@@ -54,7 +54,7 @@ class BidProductVC: BaseViewController, UITextFieldDelegate {
             showAlerOnTop(message: "Please enter quantity")
             return
         } else {
-            let data = ProductModel(productname: self.productData?.productname ?? "", adminId: self.productData?.adminId ?? "", price: self.productData?.price ?? "", quantity: self.quantityTxt.text ?? "", productImageUrl: self.productData?.productImageUrl ?? "", userId: UserDefaultsManager.shared.getDocumentId(), availableQuantity: self.productData?.availableQuantity ?? "", productDetail: self.productData?.productDetail ?? "")
+            let data = ProductModel(productname: self.productData?.productname ?? "", adminId: self.productData?.adminId ?? "", price: self.productData?.price ?? "", quantity: self.quantityTxt.text ?? "", productImageUrl: self.productData?.productImageUrl ?? "", userId: UserDefaultsManager.shared.getDocumentId(), availableQuantity: self.productData?.availableQuantity ?? "", productDetail: self.productData?.productDetail ?? "",adminEmail: self.productData?.adminEmail ?? "",userEmail: UserDefaultsManager.shared.getEmail(), product_id: self.productData?.product_id ?? "")
             
             FireStoreManager.shared.productRequestToAdmin(documentID: UserDefaultsManager.shared.getDocumentId(), adminId: self.productData?.adminId ?? "", product: data) { success in
                 if success {

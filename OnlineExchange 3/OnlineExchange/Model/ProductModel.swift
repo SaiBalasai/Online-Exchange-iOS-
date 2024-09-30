@@ -10,8 +10,11 @@ struct ProductModel {
     let userId: String
     let availableQuantity: String
     let productDetail: String
+    let adminEmail: String
+    let userEmail: String
+    let product_id: String
 
-    init(productname: String, adminId: String, price: String, quantity: String, productImageUrl: String, userId: String, availableQuantity: String, productDetail: String) {
+    init(productname: String, adminId: String, price: String, quantity: String, productImageUrl: String, userId: String, availableQuantity: String, productDetail: String, adminEmail: String, userEmail: String, product_id: String) {
         self.productname = productname
         self.adminId = adminId
         self.price = price
@@ -20,6 +23,9 @@ struct ProductModel {
         self.userId = userId
         self.availableQuantity = availableQuantity
         self.productDetail = productDetail
+        self.product_id = product_id
+        self.adminEmail = adminEmail
+        self.userEmail = userEmail
     }
 
     func toDictionary() -> [String: Any] {
@@ -31,7 +37,10 @@ struct ProductModel {
             "productImageUrl": productImageUrl,
             "userId": userId,
             "availableQuantity": availableQuantity,
-            "productDetail": productDetail
+            "productDetail": productDetail,
+            "product_id": product_id,
+            "adminEmail": adminEmail,
+            "userEmail": userEmail
         ]
     }
     
@@ -43,6 +52,9 @@ struct ProductModel {
               let productImageUrl = dictionary["productImageUrl"] as? String,
               let availableQuantity = dictionary["availableQuantity"] as? String,
               let productDetail = dictionary["productDetail"] as? String,
+              let product_id = dictionary["product_id"] as? String,
+              let adminEmail = dictionary["adminEmail"] as? String,
+              let userEmail = dictionary["userEmail"] as? String,
               let userId = dictionary["userId"] as? String else {
             return nil
         }
@@ -55,6 +67,8 @@ struct ProductModel {
         self.userId = userId
         self.availableQuantity = availableQuantity
         self.productDetail = productDetail
+        self.product_id = product_id
+        self.adminEmail = adminEmail
+        self.userEmail = userEmail
     }
 }
-

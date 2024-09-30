@@ -36,7 +36,3 @@ struct SignupModel {
         self.userType = userType
     }
 }
-
-
-
-

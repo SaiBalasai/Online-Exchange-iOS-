@@ -145,7 +145,7 @@ extension AddProductVC {
     }
     
     func uploadRequestToFirestore(fileUrl: String){
-        let requestModel = ProductModel(productname: self.productNameTxt.text ?? "", adminId: UserDefaultsManager.shared.getDocumentId(), price: self.priceTxt.text ?? "", quantity: self.quantityTxt.text ?? "", productImageUrl: fileUrl, userId: "", availableQuantity: self.quantityTxt.text ?? "", productDetail: self.productDetailTxt.text ?? "")
+        let requestModel = ProductModel(productname: self.productNameTxt.text ?? "", adminId: UserDefaultsManager.shared.getDocumentId(), price: self.priceTxt.text ?? "", quantity: self.quantityTxt.text ?? "", productImageUrl: fileUrl, userId: "", availableQuantity: self.quantityTxt.text ?? "", productDetail: self.productDetailTxt.text ?? "",adminEmail: UserDefaultsManager.shared.getEmail(),userEmail: "", product_id: "")
         
         FireStoreManager.shared.addProductDetail(documentID: UserDefaultsManager.shared.getDocumentId(), product: requestModel) { success in
             if success {

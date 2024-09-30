@@ -2,25 +2,32 @@
 import UIKit
 import SDWebImage
 
+enum userValue {
+    case manager
+}
+
 class ProductListVC: BaseViewController ,UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
     var products: [ProductModel] = []
 
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
         FireStoreManager.shared.getAdminProducts { [weak self] productsArray, error in
-                guard let self = self else { return }
-                if let productsArray = productsArray {
-                    self.products = productsArray
-                    self.tableView.reloadData()
-                }
+            guard let self = self else { return }
+            if let productsArray = productsArray {
+                self.products = productsArray
+                self.tableView.reloadData()
             }
+        }
     }
 
+
+    
 }
 
 
@@ -42,9 +49,18 @@ extension ProductListVC {
         cell.price.text = "Price: \(data.price)"
         cell.productDetail.text = "Detail: \(data.productDetail)"
         
+        
+        
         let imageUrl = data.productImageUrl
 
         cell.productImage.sd_setImage(with: URL(string: imageUrl), placeholderImage: UIImage(named: "logo"))
+        
+        
+        cell.acceptBtn.isHidden = true
+        
+        if data.adminEmail != UserDefaultsManager.shared.getEmail() {
+            cell.acceptBtn.isHidden = false
+        }
         
         cell.acceptBtn.tag = indexPath.row
         cell.acceptBtn.addTarget(self, action: #selector(openRaiseRequest(_:)), for: .touchUpInside)
