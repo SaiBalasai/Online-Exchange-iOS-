@@ -5,8 +5,8 @@ class ChatMessageCell: UITableViewCell {
     var chatMessage: ChatMessage! {
             didSet {
                 messageLabel.text = chatMessage.text
-                messageLabel.textColor = chatMessage.isIncoming ? .black : .white
-                backgroundView?.backgroundColor = chatMessage.isIncoming ? UIColor(white: 0.9, alpha: 1) : UIColor.systemBlue
+                //messageLabel.textColor = chatMessage.isIncoming ? .black : .white
+             //   backgroundView?.backgroundColor = chatMessage.isIncoming ? UIColor(white: 0.9, alpha: 1) : UIColor.systemBlue
             }
         }
         
