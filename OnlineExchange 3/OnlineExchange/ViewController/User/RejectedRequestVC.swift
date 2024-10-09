@@ -23,7 +23,7 @@ class RejectedRequestVC: BaseViewController,UITableViewDelegate, UITableViewData
     }
 
     func fetchProductData() {
-        FireStoreManager.shared.getAllRequestProductRecord(forUserId: UserDefaultsManager.shared.getDocumentId(), collectionStatus: "BidRejectedByAdminOfUser") { [weak self] fetchedProducts, error in
+        FireStoreManager.shared.getAllRequestProductRecord(forUserId: UserDefaultsManager.shared.getDocumentId(), collectionStatus: "BidRejectedByOwnerOfUser") { [weak self] fetchedProducts, error in
               if let error = error {
                   print("Error fetching products: \(error.localizedDescription)")
               } else if let fetchedProducts = fetchedProducts {

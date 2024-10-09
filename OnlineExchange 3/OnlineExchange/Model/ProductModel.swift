@@ -12,9 +12,10 @@ struct ProductModel {
     let productDetail: String
     let adminEmail: String
     let userEmail: String
-    let product_id: String
+    var product_id: String
+    var bidPrice: String
 
-    init(productname: String, adminId: String, price: String, quantity: String, productImageUrl: String, userId: String, availableQuantity: String, productDetail: String, adminEmail: String, userEmail: String, product_id: String) {
+    init(productname: String, adminId: String, price: String, quantity: String, productImageUrl: String, userId: String, availableQuantity: String, productDetail: String, adminEmail: String, userEmail: String, product_id: String, bidPrice: String) {
         self.productname = productname
         self.adminId = adminId
         self.price = price
@@ -25,6 +26,7 @@ struct ProductModel {
         self.productDetail = productDetail
         self.product_id = product_id
         self.adminEmail = adminEmail
+        self.bidPrice = bidPrice
         self.userEmail = userEmail
     }
 
@@ -40,6 +42,7 @@ struct ProductModel {
             "productDetail": productDetail,
             "product_id": product_id,
             "adminEmail": adminEmail,
+            "bidPrice": bidPrice,
             "userEmail": userEmail
         ]
     }
@@ -55,6 +58,7 @@ struct ProductModel {
               let product_id = dictionary["product_id"] as? String,
               let adminEmail = dictionary["adminEmail"] as? String,
               let userEmail = dictionary["userEmail"] as? String,
+              let bidPrice = dictionary["bidPrice"] as? String,
               let userId = dictionary["userId"] as? String else {
             return nil
         }
@@ -70,5 +74,6 @@ struct ProductModel {
         self.product_id = product_id
         self.adminEmail = adminEmail
         self.userEmail = userEmail
+        self.bidPrice = bidPrice
     }
 }

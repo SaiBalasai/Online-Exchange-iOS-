@@ -6,14 +6,18 @@ enum userValue {
     case manager
 }
 
-class ProductListVC: BaseViewController ,UITableViewDelegate, UITableViewDataSource {
+class ProductListVC: BaseViewController ,UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
     var products: [ProductModel] = []
+    var filteredProducts: [ProductModel] = []
+    var isSearching = false
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupSearchBar()
+
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
@@ -25,7 +29,12 @@ class ProductListVC: BaseViewController ,UITableViewDelegate, UITableViewDataSou
             }
         }
     }
-
+    
+    private func setupSearchBar() {
+           searchBar.delegate = self
+           searchBar.placeholder = "Search by product name, quantity, or price"
+           navigationItem.titleView = searchBar
+       }
 
     
 }
@@ -38,12 +47,12 @@ extension ProductListVC {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return products.count
+        return isSearching ? filteredProducts.count : products.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:  String(describing: TableViewCell.self), for: indexPath) as! TableViewCell
-        let data = self.products[indexPath.row]
+        let data = isSearching ? filteredProducts[indexPath.row] : products[indexPath.row]
         cell.productName.text = "Product Name: \(data.productname)"
         cell.quantity.text = "Quantity: \(data.quantity)"
         cell.price.text = "Price: \(data.price)"
@@ -58,8 +67,12 @@ extension ProductListVC {
         
         cell.acceptBtn.isHidden = true
         
-        if data.adminEmail != UserDefaultsManager.shared.getEmail() {
-            cell.acceptBtn.isHidden = false
+        let userType = UserDefaultsManager.shared.getUserType()
+        
+        if userType != UserType.admin.rawValue{
+            if data.adminEmail != UserDefaultsManager.shared.getEmail() {
+                cell.acceptBtn.isHidden = false
+            }
         }
         
         cell.acceptBtn.tag = indexPath.row
@@ -72,13 +85,36 @@ extension ProductListVC {
     }
     
     @objc func openRaiseRequest(_ sender: UIButton) {
-        let data = self.products[sender.tag]
-        
+        let data = isSearching ? filteredProducts[sender.tag] : products[sender.tag]
+
         let vc = self.storyboard?.instantiateViewController(withIdentifier:  "BidProductVC" ) as! BidProductVC
         vc.productData = data
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+           if searchText.isEmpty {
+               isSearching = false
+               filteredProducts = []
+           } else {
+               isSearching = true
+               filteredProducts = products.filter { product in
+                   return product.productname.lowercased().contains(searchText.lowercased()) ||
+                          "\(product.quantity)".contains(searchText) ||
+                          "\(product.price)".contains(searchText)
+               }
+           }
+           tableView.reloadData()
+       }
+
+       func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+           searchBar.text = ""
+           isSearching = false
+           filteredProducts = []
+           tableView.reloadData()
+           searchBar.resignFirstResponder()
+       }
    
 }
 

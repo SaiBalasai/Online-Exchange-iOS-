@@ -59,10 +59,21 @@ extension AdminAcceptedProductVC {
 
         cell.productImage.sd_setImage(with: URL(string: imageUrl), placeholderImage: UIImage(named: "logo"))
         
+        cell.acceptBtn.tag = indexPath.row
+        cell.acceptBtn.addTarget(self, action: #selector(self.acceptAppointmentStatus(_:)), for: .touchUpInside)
+
         
         return cell
     }
     
+    @objc func acceptAppointmentStatus(_ sender: UIButton) {
+        
+        let data = productsRequest[sender.tag]
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "ChatVC") as! ChatVC
+        vc.chatID = getChatID(email1: data.adminEmail, email2: data.userEmail)
+        self.navigationController?.pushViewController(vc, animated: true)
+        
+    }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 155

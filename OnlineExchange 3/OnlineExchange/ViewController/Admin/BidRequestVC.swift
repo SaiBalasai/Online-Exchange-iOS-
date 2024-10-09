@@ -47,7 +47,7 @@ extension BidRequestVC {
         let data = self.productsRequest[indexPath.row]
         cell.productName.text = "Product Name: \(data.productname)"
         cell.quantity.text = "Quantity: \(data.quantity)"
-        cell.price.text = "Price: \(data.price)"
+        cell.price.text = "Bid Price: \(data.bidPrice)"
         cell.productDetail.text = "Detail: \(data.productDetail)"
         
         let imageUrl = data.productImageUrl

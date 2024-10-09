@@ -2,26 +2,27 @@
 //  initialVC.swift
 //  OnlineExchange
 //
-//  Created by Kumar Chandu on 9/18/24.
+//  Created by Kumar Chandu on 10/7/24.
 //
 
 import UIKit
 import Lottie
 
 class initialVC: UIViewController {
-
+    
+    
+    
+    
     @IBOutlet weak var lottie: LottieAnimationView!
     
-    
-    
-    @IBAction func onGetStarted(_ sender: UIButton) {
+    @IBAction func getStarted(_ sender: UIButton) {
         
         let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
                 self.navigationController?.pushViewController(loginVC, animated: true)
-            
         
     }
     
+    @IBOutlet weak var start: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +34,8 @@ class initialVC: UIViewController {
                 view.addSubview(animationView)
                 animationView.play()
                 animationView.loopMode = .loop
+        
+
 
         // Do any additional setup after loading the view.
     }

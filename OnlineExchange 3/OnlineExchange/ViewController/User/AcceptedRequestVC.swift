@@ -23,7 +23,7 @@ class AcceptedRequestVC: BaseViewController,UITableViewDelegate, UITableViewData
     }
 
     func fetchProductData() {
-        FireStoreManager.shared.getAllRequestProductRecord(forUserId: UserDefaultsManager.shared.getDocumentId(), collectionStatus: "BidAcceptedByAdminOfUser") { [weak self] fetchedProducts, error in
+        FireStoreManager.shared.getAllRequestProductRecord(forUserId: UserDefaultsManager.shared.getDocumentId(), collectionStatus: "BidAcceptedByOwnerOfUser") { [weak self] fetchedProducts, error in
               if let error = error {
                   print("Error fetching products: \(error.localizedDescription)")
               } else if let fetchedProducts = fetchedProducts {
@@ -52,19 +52,28 @@ extension AcceptedRequestVC {
         let data = self.productsRequest[indexPath.row]
         cell.productName.text = "Product Name: \(data.productname)"
         cell.quantity.text = "Quantity: \(data.quantity)"
-        cell.price.text = "Price: \(data.price)"
+        cell.price.text = "Bid Price: \(data.bidPrice)"
         cell.productDetail.text = "Detail: \(data.productDetail)"
         
         let imageUrl = data.productImageUrl
 
         cell.productImage.sd_setImage(with: URL(string: imageUrl), placeholderImage: UIImage(named: "logo"))
         
+        cell.acceptBtn.tag = indexPath.row
+        cell.acceptBtn.addTarget(self, action: #selector(self.acceptAppointmentStatus(_:)), for: .touchUpInside)
 
         
         return cell
     }
     
-  
+    @objc func acceptAppointmentStatus(_ sender: UIButton) {
+        
+        let data = productsRequest[sender.tag]
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "ChatVC") as! ChatVC
+        vc.chatID = getChatID(email1: data.adminEmail, email2: data.userEmail)
+        self.navigationController?.pushViewController(vc, animated: true)
+        
+    }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 155

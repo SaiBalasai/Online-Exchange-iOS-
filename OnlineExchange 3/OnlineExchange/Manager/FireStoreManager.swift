@@ -173,7 +173,7 @@ class FireStoreManager {
                     productDetail: product.productDetail,
                     adminEmail: product.adminEmail,
                     userEmail: product.userEmail,
-                    product_id: productId
+                    product_id: productId, bidPrice: product.bidPrice
                 )
                 
                 let productData = updatedProduct.toDictionary()
@@ -195,118 +195,182 @@ class FireStoreManager {
     }
     
     
-    func productRequestToAdmin(documentID: String, adminId: String, product: ProductModel, completionHandler: @escaping (Bool) -> ()) {
-//        let ref = dbRef.document(documentID)
-//        let productData = product.toDictionary()
-//        
-//        ref.collection("RequestBid")
-//            .whereField("productname", isEqualTo: product.productname)
-//            .whereField("price", isEqualTo: product.price)
-//            .getDocuments { (querySnapshot, error) in
-//                if let error = error {
-//                    print("Error fetching RequestBid documents: \(error.localizedDescription)")
-//                    completionHandler(false)
-//                    return
-//                }
-//                
-//                if let querySnapshot = querySnapshot, !querySnapshot.isEmpty {
-//                    
-                    let productDocRef = self.dbRef.document(documentID).collection("RequestBid").document()
-                    
-                    let productId = productDocRef.documentID
-                    
-                    var updatedProduct = product
+    func processProductRequestAndUpdateBid(
+        documentID: String,
+        adminId: String,
+        product: ProductModel,
+        newBidPrice: String,
+        bidproduct_id: String,
+        productDocumentId: String,
+        completionHandler: @escaping (Bool) -> ()
+    ) {
+        let productDocRef = self.dbRef.document(documentID).collection("RequestBid").document(productDocumentId)
+        let productId = productDocumentId
         
-                    updatedProduct = ProductModel(
-                        productname: product.productname,
-                        adminId: product.adminId,
-                        price: product.price,
-                        quantity: product.quantity,
-                        productImageUrl: product.productImageUrl,
-                        userId: product.userId,
-                        availableQuantity: product.availableQuantity,
-                        productDetail: product.productDetail,
-                        adminEmail: product.adminEmail, 
-                        userEmail: product.userEmail,
-                        product_id: productId
-                    )
+        var updatedProduct = product
+        updatedProduct.bidPrice = newBidPrice
+        updatedProduct.product_id = productId
+
+        let productData = updatedProduct.toDictionary()
+        
+        productDocRef.setData(productData) { error in
+            if let error = error {
+                print("Error adding product to RequestBid collection: \(error.localizedDescription)")
+                completionHandler(false)
+                return
+            }
+            
+            let userRef = self.dbRef.document(adminId).collection("RequestBidFromUser").document(productId)
+            
+            userRef.setData(productData) { error in
+                if let error = error {
+                    print("Error adding request to RequestBidFromUser: \(error.localizedDescription)")
+                    completionHandler(false)
+                } else {
+                    let productDocRef = self.dbRef.document(adminId).collection("Products").document(bidproduct_id)
+                    let updatedData: [String: Any] = ["bidPrice": newBidPrice]
                     
-                    let productData = updatedProduct.toDictionary()
-                    
-                    productDocRef.setData(productData) { error in
+                    productDocRef.updateData(updatedData) { error in
                         if let error = error {
-                            print("Error adding product to Products collection: \(error.localizedDescription)")
+                            print("Error updating bidPrice in database: \(error.localizedDescription)")
                             completionHandler(false)
                         } else {
-                            
-                            let userRef = self.dbRef.document(product.adminId).collection("RequestBidFromUser").document(updatedProduct.product_id)
-                            
-                            userRef.setData(productData) { error in
-                                if let error = error {
-                                    print("Error adding request to ProductRequestToManager: \(error.localizedDescription)")
-                                    completionHandler(false)
-                                } else {
-                                    print("Request successfully added to ProductRequestToManager collection")
-                                    completionHandler(true)
-                                }
-                                
-                            }
+                            print("Successfully updated bidPrice in database")
+                            completionHandler(true)
                         }
                     }
-               // } else {
-               //     print("Document does not exist")
-               //     completionHandler(false)
-              //  }
-           // }
+                }
+            }
+        }
+    }
+
+    func deleteRemainingBidRequests(
+        adminId: String,
+        productID: String,
+        completionHandler: @escaping (Bool) -> ()
+    ) {
+        let requestBidCollection = self.dbRef.document(adminId).collection("RequestBidFromUser")
+        
+        let documentIDPattern = "\(productID)-"
+
+        requestBidCollection.getDocuments { (querySnapshot, error) in
+            if let error = error {
+                print("Error fetching documents: \(error.localizedDescription)")
+                completionHandler(false)
+                return
+            }
+            
+            let batch = Firestore.firestore().batch()
+            
+            for document in querySnapshot!.documents {
+                if document.documentID.starts(with: documentIDPattern) {
+                    batch.deleteDocument(document.reference)
+                }
+            }
+
+            batch.commit { error in
+                if let error = error {
+                    print("Error deleting documents: \(error.localizedDescription)")
+                    completionHandler(false)
+                } else {
+                    print("Successfully deleted remaining bid requests.")
+                    completionHandler(true)
+                }
+            }
+        }
     }
     
+//    func updateHighestBidPrice(productId: String, adminId: String, product: ProductModel, completionHandler: @escaping (Bool) -> ()) {
+//        let productDocRef = self.dbRef.document(adminId).collection("Products").document(productId)
+//        
+//        let productId = productDocRef.documentID
+//        
+//        var updatedProduct = product
+//        
+//        updatedProduct = ProductModel(
+//            productname: product.productname,
+//            adminId: product.adminId,
+//            price: product.price,
+//            quantity: product.quantity,
+//            productImageUrl: product.productImageUrl,
+//            userId: product.userId,
+//            availableQuantity: product.availableQuantity,
+//            productDetail: product.productDetail,
+//            adminEmail: product.adminEmail,
+//            userEmail: product.userEmail,
+//            product_id: productId, bidPrice: product.bidPrice
+//        )
+//        
+//        let productData = updatedProduct.toDictionary()
+//        
+//        productDocRef.setData(productData) { error in
+//            if let error = error {
+//                print("Error adding product to Products collection: \(error.localizedDescription)")
+//                completionHandler(false)
+//            } else {
+//                
+//                let userRef = self.dbRef.document(product.adminId).collection("RequestBidFromUser").document(updatedProduct.product_id)
+//                
+//                userRef.setData(productData) { error in
+//                    if let error = error {
+//                        print("Error adding request to ProductRequestToManager: \(error.localizedDescription)")
+//                        completionHandler(false)
+//                    } else {
+//                        print("Request successfully added to ProductRequestToManager collection")
+//                        completionHandler(true)
+//                    }
+//                    
+//                }
+//            }
+//        }
+//    }
     
     func getAdminProducts(completionHandler: @escaping ([ProductModel]?, Error?) -> ()) {
         var productsArray: [ProductModel] = []
         
         dbRef.getDocuments { (snapshot, error) in
-                if let error = error {
-                    print("Error fetching admin users: \(error.localizedDescription)")
-                    completionHandler(nil, error)
-                    return
-                }
+            if let error = error {
+                print("Error fetching admin users: \(error.localizedDescription)")
+                completionHandler(nil, error)
+                return
+            }
+            
+            guard let snapshot = snapshot else {
+                completionHandler(nil, nil)
+                return
+            }
+            
+            let group = DispatchGroup()
+            
+            for document in snapshot.documents {
+                group.enter()
                 
-                guard let snapshot = snapshot else {
-                    completionHandler(nil, nil)
-                    return
-                }
+                let productsRef = self.dbRef.document(document.documentID).collection("Products")
                 
-                let group = DispatchGroup()
-                
-                for document in snapshot.documents {
-                    group.enter()
+                productsRef.getDocuments { (productSnapshot, error) in
+                    if let error = error {
+                        print("Error fetching products: \(error.localizedDescription)")
+                        group.leave()
+                        return
+                    }
                     
-                    let productsRef = self.dbRef.document(document.documentID).collection("Products")
-                    
-                    productsRef.getDocuments { (productSnapshot, error) in
-                        if let error = error {
-                            print("Error fetching products: \(error.localizedDescription)")
-                            group.leave()
-                            return
-                        }
-                        
-                        if let productSnapshot = productSnapshot {
-                            for productDocument in productSnapshot.documents {
-                                let productData = productDocument.data()
-                                if let product = ProductModel(dictionary: productData) {
-                                    productsArray.append(product)
-                                }
+                    if let productSnapshot = productSnapshot {
+                        for productDocument in productSnapshot.documents {
+                            let productData = productDocument.data()
+                            if let product = ProductModel(dictionary: productData) {
+                                productsArray.append(product)
                             }
                         }
-                        
-                        group.leave()
                     }
-                }
-                
-                group.notify(queue: .main) {
-                    completionHandler(productsArray, nil)
+                    
+                    group.leave()
                 }
             }
+            
+            group.notify(queue: .main) {
+                completionHandler(productsArray, nil)
+            }
+        }
     }
     
     func getBidRequests(forUserId userId: String, completionHandler: @escaping ([ProductModel]?, Error?) -> ()) {
@@ -350,61 +414,62 @@ class FireStoreManager {
                 return
             }
             
-                let userRef = self.dbRef.document(UserDefaultsManager.shared.getDocumentId())
-                
-            let rejectProductRef = userRef.collection("BidAcceptedByAdmin").document(request.product_id ?? "")
-                
+            let userRef = self.dbRef.document(UserDefaultsManager.shared.getDocumentId())
+            
+            let rejectProductRef = userRef.collection("BidAcceptedByOwner").document(request.product_id)
+            
             rejectProductRef.setData(request.toDictionary()) { error in
-                    if let error = error {
-                        print("Error adding product to RejectProduct collection: \(error.localizedDescription)")
-                        completionHandler(false)
-                        return
-                    } else {
-                        print("Product successfully added to RejectProduct collection")
-                        
-                        let userRequestRef = self.dbRef.document(request.userId).collection("BidAcceptedByAdminOfUser").document(request.product_id ?? "")
-                        
-                        userRequestRef.setData(request.toDictionary()) { error in
-                            if let error = error {
-                                print("Error adding request to user's RejectProductRequest collection: \(error.localizedDescription)")
-                                completionHandler(false)
-                                return
-                            } else {
-                                // Step 3: Delete the document from "ProductRequest" collection
-                                ref.document(request.product_id ?? "").delete { error in
-                                    if let error = error {
-                                        print("Error deleting product request from ProductRequest collection: \(error.localizedDescription)")
-                                        completionHandler(false)
-                                    } else {
-                                        let userref = self.dbRef.document(request.userId ?? "").collection("RequestBid")
-                                        
-                                        userref.document(request.product_id ?? "").delete { error in
-                                            if let error = error {
-                                                print("Error deleting product request from ProductRequest collection: \(error.localizedDescription)")
-                                                completionHandler(false)
-                                            } else {
-                                                
-                                                print("Product request successfully deleted from ProductRequest collection")
-                                               // completionHandler(true)
-                                            }
+                if let error = error {
+                    print("Error adding product to RejectProduct collection: \(error.localizedDescription)")
+                    completionHandler(false)
+                    return
+                } else {
+                    print("Product successfully added to RejectProduct collection")
+                    
+                    let userRequestRef = self.dbRef.document(request.userId).collection("BidAcceptedByOwnerOfUser").document(request.product_id)
+                    
+                    userRequestRef.setData(request.toDictionary()) { error in
+                        if let error = error {
+                            print("Error adding request to user's RejectProductRequest collection: \(error.localizedDescription)")
+                            completionHandler(false)
+                            return
+                        } else {
+                            // Step 3: Delete the document from "ProductRequest" collection
+                            ref.document(request.product_id).delete { error in
+                                if let error = error {
+                                    print("Error deleting product request from ProductRequest collection: \(error.localizedDescription)")
+                                    completionHandler(false)
+                                } else {
+                                    let userref = self.dbRef.document(request.userId).collection("RequestBid")
+                                    
+                                    userref.document(request.product_id ?? "").delete { error in
+                                        if let error = error {
+                                            print("Error deleting product request from ProductRequest collection: \(error.localizedDescription)")
+                                            completionHandler(false)
+                                        } else {
+                                            
+                                            print("Product request successfully deleted from ProductRequest collection")
+                                            // completionHandler(true)
                                         }
-                                        
-                                        print("Product request successfully deleted from ProductRequest collection")
-                                        self.updateAdminProductQuantity(adminID: request.adminId, product: request) { success in
-                                                       if success {
-                                                           print("Product quantity successfully updated in warehouse")
-                                                           completionHandler(true)
-                                                       } else {
-                                                           print("Failed to update product quantity in warehouse")
-                                                           completionHandler(false)
-                                                       }
-                                                   }
-                                }
+                                    }
+                                    
+                                    print("Product request successfully deleted from ProductRequest collection")
+                                    let requestproductId = "\(request.productname)-\(request.price)-\(request.quantity)"
+                                    self.deleteRemainingBidRequests(adminId: request.adminId, productID: requestproductId) { success in
+                                        if success {
+                                            print("Product quantity successfully updated in warehouse")
+                                            completionHandler(true)
+                                        } else {
+                                            print("Failed to update product quantity in warehouse")
+                                            completionHandler(false)
+                                        }
+                                    }
                                 }
                             }
                         }
                     }
                 }
+            }
             
         }
     }
@@ -417,55 +482,55 @@ class FireStoreManager {
             .whereField("price", isEqualTo: product.price)
             .whereField("availableQuantity", isEqualTo: product.availableQuantity)
             .getDocuments { (querySnapshot, error) in
-            if let error = error {
-                print("Error fetching product documents: \(error.localizedDescription)")
-                completionHandler(false)
-                return
-            }
-            
-            guard let querySnapshot = querySnapshot, !querySnapshot.isEmpty else {
-                print("No matching products found")
-                completionHandler(false)
-                return
-            }
-            
-            // Assuming that there will be only one matching product
-            if let document = querySnapshot.documents.first {
-                var productData = document.data()
-                let productDocID = document.documentID
+                if let error = error {
+                    print("Error fetching product documents: \(error.localizedDescription)")
+                    completionHandler(false)
+                    return
+                }
                 
-                // Retrieve the current quantity and update it
-                if let currentQuantityString = productData["quantity"] as? String, let currentQuantity = Int(currentQuantityString) {
-                    let productQuantityString = product.quantity
-                    let productQuantity = Int(productQuantityString) ?? 0
-
-                    let newQuantity = currentQuantity - productQuantity
-                    print("currentQuantity: \(currentQuantity), productQuantity: \(productQuantity), newQuantity: \(newQuantity)")
+                guard let querySnapshot = querySnapshot, !querySnapshot.isEmpty else {
+                    print("No matching products found")
+                    completionHandler(false)
+                    return
+                }
+                
+                // Assuming that there will be only one matching product
+                if let document = querySnapshot.documents.first {
+                    var productData = document.data()
+                    let productDocID = document.documentID
                     
-                    // Update the product's quantity
-                    productData["quantity"] = "\(newQuantity)"
-                    
-                    // Update the document in Firestore with the new data
-                    warehouseRef.document(productDocID).updateData(productData) { error in
-                        if let error = error {
-                            print("Error updating product quantity: \(error.localizedDescription)")
-                            completionHandler(false)
-                        } else {
-                            print("Product quantity updated successfully")
-                            completionHandler(true)
+                    // Retrieve the current quantity and update it
+                    if let currentQuantityString = productData["quantity"] as? String, let currentQuantity = Int(currentQuantityString) {
+                        let productQuantityString = product.quantity
+                        let productQuantity = Int(productQuantityString) ?? 0
+                        
+                        let newQuantity = currentQuantity - productQuantity
+                        print("currentQuantity: \(currentQuantity), productQuantity: \(productQuantity), newQuantity: \(newQuantity)")
+                        
+                        // Update the product's quantity
+                        productData["quantity"] = "\(newQuantity)"
+                        
+                        // Update the document in Firestore with the new data
+                        warehouseRef.document(productDocID).updateData(productData) { error in
+                            if let error = error {
+                                print("Error updating product quantity: \(error.localizedDescription)")
+                                completionHandler(false)
+                            } else {
+                                print("Product quantity updated successfully")
+                                completionHandler(true)
+                            }
                         }
+                    } else {
+                        print("Invalid or missing current quantity")
+                        completionHandler(false)
                     }
                 } else {
-                    print("Invalid or missing current quantity")
+                    print("Product not found")
                     completionHandler(false)
                 }
-            } else {
-                print("Product not found")
-                completionHandler(false)
             }
-        }
     }
-
+    
     
     func rejectProductRequest(request: ProductModel, completionHandler: @escaping (Bool) -> ()) {
         let ref = self.dbRef.document(UserDefaultsManager.shared.getDocumentId()).collection("RequestBidFromUser")
@@ -483,58 +548,58 @@ class FireStoreManager {
                 return
             }
             
-                let userRef = self.dbRef.document(UserDefaultsManager.shared.getDocumentId())
-                
-            let rejectProductRef = userRef.collection("BidRejectedByAdmin").document(request.product_id)
-                
+            let userRef = self.dbRef.document(UserDefaultsManager.shared.getDocumentId())
+            
+            let rejectProductRef = userRef.collection("BidRejectedByOwner").document(request.product_id)
+            
             rejectProductRef.setData(request.toDictionary()) { error in
-                    if let error = error {
-                        print("Error adding product to RejectProduct collection: \(error.localizedDescription)")
-                        completionHandler(false)
-                        return
-                    } else {
-                        print("Product successfully added to RejectProduct collection")
-                        
-                        let userRequestRef = self.dbRef.document(request.userId).collection("BidRejectedByAdminOfUser").document(request.product_id)
-                        
-                        userRequestRef.setData(request.toDictionary()) { error in
-                            if let error = error {
-                                print("Error adding request to user's RejectProductRequest collection: \(error.localizedDescription)")
-                                completionHandler(false)
-                                return
-                            } else {
-                                ref.document(request.product_id).delete { error in
-                                    if let error = error {
-                                        print("Error deleting product request from ProductRequest collection: \(error.localizedDescription)")
-                                        completionHandler(false)
-                                    } else {
-                                        let userref = self.dbRef.document(request.userId).collection("RequestBid")
-                                        
-                                        userref.document(request.product_id ?? "").delete { error in
-                                            if let error = error {
-                                                print("Error deleting product request from ProductRequest collection: \(error.localizedDescription)")
-                                                completionHandler(false)
-                                            } else {
-                                                
-                                                print("Product request successfully deleted from ProductRequest collection")
-                                                completionHandler(true)
-                                            }
+                if let error = error {
+                    print("Error adding product to RejectProduct collection: \(error.localizedDescription)")
+                    completionHandler(false)
+                    return
+                } else {
+                    print("Product successfully added to RejectProduct collection")
+                    
+                    let userRequestRef = self.dbRef.document(request.userId).collection("BidRejectedByOwnerOfUser").document(request.product_id)
+                    
+                    userRequestRef.setData(request.toDictionary()) { error in
+                        if let error = error {
+                            print("Error adding request to user's RejectProductRequest collection: \(error.localizedDescription)")
+                            completionHandler(false)
+                            return
+                        } else {
+                            ref.document(request.product_id).delete { error in
+                                if let error = error {
+                                    print("Error deleting product request from ProductRequest collection: \(error.localizedDescription)")
+                                    completionHandler(false)
+                                } else {
+                                    let userref = self.dbRef.document(request.userId).collection("RequestBid")
+                                    
+                                    userref.document(request.product_id ?? "").delete { error in
+                                        if let error = error {
+                                            print("Error deleting product request from ProductRequest collection: \(error.localizedDescription)")
+                                            completionHandler(false)
+                                        } else {
+                                            
+                                            print("Product request successfully deleted from ProductRequest collection")
+                                            completionHandler(true)
                                         }
-                                        
-                                        print("Product request successfully deleted from ProductRequest ")
-                                }
+                                    }
+                                    
+                                    print("Product request successfully deleted from ProductRequest ")
                                 }
                             }
                         }
                     }
                 }
+            }
             
         }
     }
     
     func getAllRequestProductRecord(forUserId userId: String, collectionStatus: String, completionHandler: @escaping ([ProductModel]?, Error?) -> ()){
         let userRef = self.dbRef.document(userId).collection(collectionStatus)
-
+        
         userRef.getDocuments { querySnapshot, error in
             if let error = error {
                 print("Error fetching bid requests: \(error.localizedDescription)")
@@ -547,12 +612,12 @@ class FireStoreManager {
                 completionHandler([], nil)
                 return
             }
-
+            
             let productRequests = documents.compactMap { document -> ProductModel? in
                 let data = document.data()
                 return ProductModel(dictionary: data)
             }
-
+            
             completionHandler(productRequests, nil)
         }
     }
@@ -585,6 +650,24 @@ class FireStoreManager {
             completionHandler(filteredDocuments, nil)
         }
         
+    }
+    
+    func getChatListForAdmin(completionHandler: @escaping ([QueryDocumentSnapshot]?, Error?) -> Void) {
+        
+        let lastMessages = self.db.collection("LastMessages")
+
+        let query = lastMessages.order(by: "dateSent", descending: true).limit(to: 1000)
+        
+        query.addSnapshotListener { (querySnapshot, error) in
+            if let error = error {
+                print("Error fetching documents: \(error)")
+                completionHandler(nil, error)
+                return
+            }
+            
+            let documents = querySnapshot?.documents
+            completionHandler(documents, nil)
+        }
     }
 }
 
