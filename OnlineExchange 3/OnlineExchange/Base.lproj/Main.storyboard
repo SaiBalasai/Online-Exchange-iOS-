@@ -1649,9 +1649,13 @@
                             </view>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="DAa-8a-KQ5">
                                 <rect key="frame" x="0.0" y="90" width="423" height="56"/>
-                                <color key="backgroundColor" red="0.58431375029999999" green="0.72941178080000002" blue="0.61568629740000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
                                 <connections>
                                     <outlet property="delegate" destination="nyx-De-8md" id="ok9-ya-HKe"/>
                                 </connections>
@@ -1717,6 +1721,15 @@
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UAt-to-p43">
+                                        <rect key="frame" x="320" y="76" width="51" height="35"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="heart" catalog="system"/>
+                                        <connections>
+                                            <action selector="favourite:" destination="1hh-PD-g2x" eventType="touchUpInside" id="Y63-p6-nHb"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -1983,6 +1996,7 @@
                     <connections>
                         <outlet property="bidpriceTxt" destination="vUg-Cg-R5j" id="Pa5-uI-5Hw"/>
                         <outlet property="detailTxt" destination="0D0-1p-Wne" id="MKO-0a-RXc"/>
+                        <outlet property="fav" destination="UAt-to-p43" id="dFI-8E-sag"/>
                         <outlet property="highestbidpriceTxt" destination="jjT-1w-QA2" id="s3Q-jm-3tk"/>
                         <outlet property="priceTxt" destination="fuz-wI-nfZ" id="PvU-9d-KDR"/>
                         <outlet property="productNameTxt" destination="P5O-K1-5Bg" id="w6J-YJ-6QH"/>
@@ -2003,7 +2017,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="1kk-IT-ft9">
-                                <rect key="frame" x="40" y="203.66666666666663" width="310" height="450"/>
+                                <rect key="frame" x="40" y="163.66666666666663" width="310" height="530"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C5H-8a-dhu" customClass="ButtonLayerSetup" customModule="OnlineExchange" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="310" height="50"/>
@@ -2025,7 +2039,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="09l-Bf-YyL" customClass="ButtonLayerSetup" customModule="OnlineExchange" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="80.000000000000028" width="310" height="50"/>
+                                        <rect key="frame" x="0.0" y="80" width="310" height="50"/>
                                         <color key="backgroundColor" systemColor="tintColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="r3H-H5-XwO"/>
@@ -2117,6 +2131,25 @@
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <segue destination="wMY-H2-PXF" kind="show" id="a17-yf-Q3B"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lyf-92-dq3" customClass="ButtonLayerSetup" customModule="OnlineExchange" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="480" width="310" height="50"/>
+                                        <color key="backgroundColor" systemColor="tintColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="7qR-hc-7b7"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
+                                        <state key="normal" title="Favourites">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <segue destination="LU7-PW-NCe" kind="showDetail" identifier="FavoriteCell" id="Zc5-J1-a0y"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -2384,6 +2417,43 @@
             </objects>
             <point key="canvasLocation" x="4719.2307692307695" y="1343.6018957345971"/>
         </scene>
+        <!--FavouriteTVC-->
+        <scene sceneID="ff3-Ch-UyZ">
+            <objects>
+                <tableViewController storyboardIdentifier="FavoriteCell" modalPresentationStyle="fullScreen" id="LU7-PW-NCe" customClass="FavouriteTVC" customModule="OnlineExchange" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="AVH-B4-cTw">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favourites" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sXP-kB-O8W">
+                            <rect key="frame" x="0.0" y="0.0" width="390" height="42"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FavoriteCell" id="Zf3-a3-muo">
+                                <rect key="frame" x="0.0" y="92" width="390" height="43.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Zf3-a3-muo" id="ToM-0M-wi8">
+                                    <rect key="frame" x="0.0" y="0.0" width="390" height="43.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <accessibility key="accessibilityConfiguration" identifier="FavoriteCell"/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="LU7-PW-NCe" id="oxK-5o-UIw"/>
+                            <outlet property="delegate" destination="LU7-PW-NCe" id="iAV-vL-eY4"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="fae-Zb-8N1"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZMR-Ao-YGl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5784.6153846153848" y="1342.8909952606634"/>
+        </scene>
         <!--Request ListVC-->
         <scene sceneID="Hh6-dM-X9T">
             <objects>
@@ -2477,7 +2547,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HfC-uW-b7v" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5150" y="673"/>
+            <point key="canvasLocation" x="5150" y="672.51184834123217"/>
         </scene>
         <!--Accepted RequestVC-->
         <scene sceneID="1zM-Vq-l6b">
@@ -3356,6 +3426,7 @@
         <image name="arrow.forward" catalog="system" width="128" height="95"/>
         <image name="chevron.backward" catalog="system" width="97" height="128"/>
         <image name="eye.slash" catalog="system" width="128" height="97"/>
+        <image name="heart" catalog="system" width="128" height="107"/>
         <image name="list.bullet.rectangle.portrait" catalog="system" width="115" height="128"/>
         <image name="logo" width="200" height="100"/>
         <namedColor name="appColor">
