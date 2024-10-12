@@ -120,6 +120,8 @@ class BidProductVC: BaseViewController, UITextFieldDelegate {
     }
     
     
+    
+    
     @IBOutlet weak var fav: UIButton!
     
     
@@ -155,6 +157,7 @@ class BidProductVC: BaseViewController, UITextFieldDelegate {
             
             showAlerOnTop(message: "Price must be greater than \(self.highestbidpriceTxt.text ?? "") rupees.")
         }
+        
     }
 }
 extension UserDefaults {
@@ -196,6 +199,7 @@ extension UserDefaults {
         let favorites = getFavoriteProducts()
         return favorites.contains(where: { $0.product_id == product.product_id })
     }
+    
 }
 
 

@@ -1,6 +1,6 @@
 //
 //  RejectedRequestVC.swift
-//  SmartInventory
+//  OnlineExchange
 //
 //  Created by Macbook-Pro on 18/09/24.
 //
