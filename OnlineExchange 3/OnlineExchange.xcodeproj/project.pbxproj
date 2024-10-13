@@ -58,6 +58,7 @@
 		A99384D42CB46F47007D32A6 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = A99384D32CB46F47007D32A6 /* Lottie */; };
 		A99384D62CB4706B007D32A6 /* initialVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99384D52CB4706B007D32A6 /* initialVC.swift */; };
 		A9A18DE42CB9A9E10023C715 /* FavouriteTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A18DE32CB9A9E10023C715 /* FavouriteTVC.swift */; };
+		A9B72F902CBB57A200D1ED25 /* FavoriteProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B72F8F2CBB57A200D1ED25 /* FavoriteProductCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -105,6 +106,7 @@
 		8055C5DD2C9AAB3E00420E0F /* BidRequestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BidRequestVC.swift; sourceTree = "<group>"; };
 		A99384D52CB4706B007D32A6 /* initialVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = initialVC.swift; sourceTree = "<group>"; };
 		A9A18DE32CB9A9E10023C715 /* FavouriteTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteTVC.swift; sourceTree = "<group>"; };
+		A9B72F8F2CBB57A200D1ED25 /* FavoriteProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteProductCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +189,7 @@
 				8055C57E2C95F21300420E0F /* SceneDelegate.swift */,
 				8055C5A52C95F25500420E0F /* GoogleService-Info.plist */,
 				8055C5822C95F21300420E0F /* Main.storyboard */,
+				A9B72F8F2CBB57A200D1ED25 /* FavoriteProductCell.swift */,
 				A9A18DE32CB9A9E10023C715 /* FavouriteTVC.swift */,
 				A99384D52CB4706B007D32A6 /* initialVC.swift */,
 				8055C5852C95F21500420E0F /* Assets.xcassets */,
@@ -385,6 +388,7 @@
 				8055C5AD2C95F25500420E0F /* BaseViewController.swift in Sources */,
 				8055C57D2C95F21300420E0F /* AppDelegate.swift in Sources */,
 				8055C5B52C95F25500420E0F /* Extensions.swift in Sources */,
+				A9B72F902CBB57A200D1ED25 /* FavoriteProductCell.swift in Sources */,
 				800234D72C9EF9B30049E5E9 /* ChatList.swift in Sources */,
 				800234DB2C9EF9B30049E5E9 /* ChatVC.swift in Sources */,
 				8055C5B42C95F25500420E0F /* DesignableView.swift in Sources */,

@@ -134,25 +134,56 @@ class FavouriteTVC: UITableViewController {
            dismiss(animated: true, completion: nil)
        }
    }
+    
 
    // MARK: - Table view data source
    
    override func numberOfSections(in tableView: UITableView) -> Int {
        return 1
    }
+    
 
    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
        return favoriteProducts.count
    }
    
-   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       let cell = tableView.dequeueReusableCell(withIdentifier: "FavoriteCell", for: indexPath)
-       // Configure the cell with product details
-       let product = favoriteProducts[indexPath.row]
-       cell.textLabel?.text = product.productname
-       cell.detailTextLabel?.text = "Price: \(product.price), Bid: \(product.bidPrice)"
-       return cell
-   }
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 155 + 3 // Original height + top and bottom padding (20 points total)
+    }
+
+    
+//   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//       let cell = tableView.dequeueReusableCell(withIdentifier: "FavoriteCell", for: indexPath)
+//       // Configure the cell with product details
+//       let product = favoriteProducts[indexPath.row]
+//       cell.textLabel?.text = product.productname
+//       cell.detailTextLabel?.text = "Price: \(product.price), Bid: \(product.bidPrice)"
+//       return cell
+//   }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FavoriteCell", for: indexPath) as! FavoriteProductCell
+        
+        // Get the product for the current index path
+        let product = favoriteProducts[indexPath.row]
+        
+        // Set the product name, quantity, price, and details
+        cell.productNameLabel.text = "Product Name: \(product.productname)"
+      //  cell.productQuantityLabel.text = "Quantity: \(product.quantity)"
+        cell.productPriceLabel.text = "Price: \(product.price)"
+      //  cell.productDetailLabel.text = "Detail: \(product.productDetail)"
+        
+        // Set the product image
+        let imageUrl = product.productImageUrl
+        cell.productImageView.sd_setImage(with: URL(string: imageUrl), placeholderImage: UIImage(named: "logo"))
+        
+        // Optional: Style the image view (rounded corners)
+            cell.productImageView.layer.cornerRadius = 0
+            cell.productImageView.clipsToBounds = true
+        
+        return cell
+    }
+
    
    // MARK: - Swipe to Delete (Unfavorite)
 
