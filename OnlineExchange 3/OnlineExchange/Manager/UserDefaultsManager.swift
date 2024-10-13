@@ -49,6 +49,10 @@ class UserDefaultsManager  {
        return UserDefaults.standard.string(forKey: "documentId") ?? ""
     }
     
+    func saveFullname(_ fullname: String) {
+            UserDefaults.standard.setValue(fullname, forKey: "fullname")
+        }
+    
     func saveData(email:String, userType: String, fullname: String) {
         
         UserDefaults.standard.setValue(email, forKey: "email")
