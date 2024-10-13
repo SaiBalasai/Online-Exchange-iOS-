@@ -14,6 +14,7 @@ struct ProductModel {
     let userEmail: String
     var product_id: String
     var bidPrice: String
+    var dateAdded: Date
 
     init(productname: String, adminId: String, price: String, quantity: String, productImageUrl: String, userId: String, availableQuantity: String, productDetail: String, adminEmail: String, userEmail: String, product_id: String, bidPrice: String) {
         self.productname = productname
@@ -28,6 +29,7 @@ struct ProductModel {
         self.adminEmail = adminEmail
         self.bidPrice = bidPrice
         self.userEmail = userEmail
+        self.dateAdded = Date()
     }
 
     func toDictionary() -> [String: Any] {
@@ -75,5 +77,6 @@ struct ProductModel {
         self.adminEmail = adminEmail
         self.userEmail = userEmail
         self.bidPrice = bidPrice
+        self.dateAdded = Date()
     }
 }

@@ -14,9 +14,27 @@ class ProductListVC: BaseViewController ,UITableViewDelegate, UITableViewDataSou
     var isSearching = false
 
 
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        setupSearchBar()
+//
+//        self.tableView.delegate = self
+//        self.tableView.dataSource = self
+//        
+//        FireStoreManager.shared.getAdminProducts { [weak self] productsArray, error in
+//            guard let self = self else { return }
+//            if let productsArray = productsArray {
+//                self.products = productsArray
+//                self.tableView.reloadData()
+//            }
+//        }
+//    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSearchBar()
+        
+
 
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -24,11 +42,20 @@ class ProductListVC: BaseViewController ,UITableViewDelegate, UITableViewDataSou
         FireStoreManager.shared.getAdminProducts { [weak self] productsArray, error in
             guard let self = self else { return }
             if let productsArray = productsArray {
-                self.products = productsArray
+                // Sort products by dateAdded in descending order
+                self.products = productsArray.sorted { $0.dateAdded > $1.dateAdded }
                 self.tableView.reloadData()
+                print("Fetched Products: \(productsArray)")
+                print("Sorted Products: \(self.products)")
+             //   print("Fetched product: \(product.productname)")
+                print("Total products fetched: \(productsArray.count)")
+
+
             }
         }
+        
     }
+
     
     private func setupSearchBar() {
            searchBar.delegate = self
