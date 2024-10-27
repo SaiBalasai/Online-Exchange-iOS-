@@ -2,12 +2,20 @@
 
 import UIKit
 import FirebaseCore
+//import BraintreeDropIn
+import BraintreeCore
+import BraintreeCard
+import BraintreeApplePay
+import BraintreePayPal
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         Thread.sleep(forTimeInterval: 3.0)
+        
+       // UserDefaults.standard.set(true, forKey: "UIViewShowAlignmentRectEdges")
+
         
         FirebaseApp.configure()
         return true

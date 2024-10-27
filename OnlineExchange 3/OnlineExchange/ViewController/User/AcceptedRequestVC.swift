@@ -11,14 +11,29 @@ class AcceptedRequestVC: BaseViewController,UITableViewDelegate, UITableViewData
     @IBOutlet weak var tableView: UITableView!
     var productsRequest: [ProductModel] = []
 
+    
+    @IBAction func buy(_ sender: UIButton) {
+      
+        let tag = sender.tag
+            guard tag >= 0 && tag < productsRequest.count else { return }
+            
+            // Get the product corresponding to the selected row
+            let product = productsRequest[tag]
+            
+            // Initialize PaymentVC from the storyboard
+            if let paymentVC = self.storyboard?.instantiateViewController(withIdentifier: "PaymentVC") as? PaymentViewController {
+                paymentVC.product = product  // Pass the product data
+                
+                // Navigate to PaymentVC
+                self.navigationController?.pushViewController(paymentVC, animated: true)
+            }
+      
+       }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
-
         self.fetchProductData()
     }
 
