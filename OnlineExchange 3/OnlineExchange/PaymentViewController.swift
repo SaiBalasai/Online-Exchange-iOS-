@@ -124,20 +124,31 @@ class PaymentViewController: UIViewController{
         
         @IBOutlet weak var pay: UIButton!
         
-        func setupProductDetails() {
-            guard let product = product else { return }
-            
-            // Setting the product details in the UI elements
-            productNameLabel.text = product.productname
-            productPriceLabel.text = "Price: \(product.bidPrice)"
-            productQuantityLabel.text = "Quantity: \(product.quantity)"
-            
-            // Directly use product.productImageUrl without optional binding
-            let imageUrl = URL(string: product.productImageUrl)
+//        func setupProductDetails() {
+//            guard let product = product else { return }
+//            
+//            // Setting the product details in the UI elements
+//            productNameLabel.text = product.productname
+//            productPriceLabel.text = "Price: \(product.bidPrice)"
+//            productQuantityLabel.text = "Quantity: \(product.quantity)"
+//            
+//            // Directly use product.productImageUrl without optional binding
+//            let imageUrl = URL(string: product.productImageUrl)
+//            productImageView.sd_setImage(with: imageUrl, placeholderImage: UIImage(named: "placeholderImage"))
+//        }
+        
+    func setupProductDetails() {
+        guard let product = product else { return }
+        
+        productNameLabel.text = product.productname
+        productPriceLabel.text = "Price: \(product.bidPrice)"
+        productQuantityLabel.text = "Quantity: \(product.quantity)"
+        
+        if let imageUrl = URL(string: product.productImageUrl) {
             productImageView.sd_setImage(with: imageUrl, placeholderImage: UIImage(named: "placeholderImage"))
         }
-        
-        
+    }
+
         
         
         

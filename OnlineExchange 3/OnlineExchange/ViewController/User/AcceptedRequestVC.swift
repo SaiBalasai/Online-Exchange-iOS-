@@ -13,20 +13,36 @@ class AcceptedRequestVC: BaseViewController,UITableViewDelegate, UITableViewData
 
     
     @IBAction func buy(_ sender: UIButton) {
-      
+        
+        
         let tag = sender.tag
-            guard tag >= 0 && tag < productsRequest.count else { return }
-            
-            // Get the product corresponding to the selected row
-            let product = productsRequest[tag]
-            
-            // Initialize PaymentVC from the storyboard
-            if let paymentVC = self.storyboard?.instantiateViewController(withIdentifier: "PaymentVC") as? PaymentViewController {
-                paymentVC.product = product  // Pass the product data
-                
-                // Navigate to PaymentVC
-                self.navigationController?.pushViewController(paymentVC, animated: true)
-            }
+           guard tag >= 0 && tag < productsRequest.count else { return }
+        //print("Navigating to PaymentVC with product: \(product.productname)")
+
+           // Get the product corresponding to the selected row
+           let product = productsRequest[tag]
+           
+           // Initialize PaymentVC from the storyboard
+           if let paymentVC = self.storyboard?.instantiateViewController(withIdentifier: "PaymentVC") as? PaymentViewController {
+               paymentVC.product = product  // Pass the correct product data
+               
+               // Navigate to PaymentVC
+               self.navigationController?.pushViewController(paymentVC, animated: true)
+           }
+      
+//        let tag = sender.tag
+//            guard tag >= 0 && tag < productsRequest.count else { return }
+//            
+//            // Get the product corresponding to the selected row
+//            let product = productsRequest[tag]
+//            
+//            // Initialize PaymentVC from the storyboard
+//            if let paymentVC = self.storyboard?.instantiateViewController(withIdentifier: "PaymentVC") as? PaymentViewController {
+//                paymentVC.product = product  // Pass the product data
+//                
+//                // Navigate to PaymentVC
+//                self.navigationController?.pushViewController(paymentVC, animated: true)
+//            }
       
        }
     
@@ -35,6 +51,9 @@ class AcceptedRequestVC: BaseViewController,UITableViewDelegate, UITableViewData
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.fetchProductData()
+        
+        
+        
     }
 
     func fetchProductData() {
@@ -61,8 +80,28 @@ extension AcceptedRequestVC {
         return self.productsRequest.count
     }
     
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier:  String(describing: TableViewCell.self), for: indexPath) as! TableViewCell
+//       
+//        let data = self.productsRequest[indexPath.row]
+//        cell.productName.text = "Product Name: \(data.productname)"
+//        cell.quantity.text = "Quantity: \(data.quantity)"
+//        cell.price.text = "Bid Price: \(data.bidPrice)"
+//        cell.productDetail.text = "Detail: \(data.productDetail)"
+//        
+//        let imageUrl = data.productImageUrl
+//
+//        cell.productImage.sd_setImage(with: URL(string: imageUrl), placeholderImage: UIImage(named: "logo"))
+//        
+//        cell.acceptBtn.tag = indexPath.row
+//        cell.acceptBtn.addTarget(self, action: #selector(self.acceptAppointmentStatus(_:)), for: .touchUpInside)
+//
+//        
+//        return cell
+//    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier:  String(describing: TableViewCell.self), for: indexPath) as! TableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TableViewCell.self), for: indexPath) as! TableViewCell
        
         let data = self.productsRequest[indexPath.row]
         cell.productName.text = "Product Name: \(data.productname)"
@@ -71,15 +110,15 @@ extension AcceptedRequestVC {
         cell.productDetail.text = "Detail: \(data.productDetail)"
         
         let imageUrl = data.productImageUrl
-
         cell.productImage.sd_setImage(with: URL(string: imageUrl), placeholderImage: UIImage(named: "logo"))
         
+        // Setting the tag so the button can identify the correct product
         cell.acceptBtn.tag = indexPath.row
-        cell.acceptBtn.addTarget(self, action: #selector(self.acceptAppointmentStatus(_:)), for: .touchUpInside)
-
+        cell.acceptBtn.addTarget(self, action: #selector(self.buy(_:)), for: .touchUpInside) // Trigger buy function with correct tag
         
         return cell
     }
+
     
     @objc func acceptAppointmentStatus(_ sender: UIButton) {
         

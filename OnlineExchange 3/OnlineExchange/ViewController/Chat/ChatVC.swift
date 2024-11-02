@@ -1,6 +1,7 @@
 import UIKit
 import Foundation
 import FirebaseFirestore
+import UserNotifications
 
 
 class ChatVC: UIViewController {
@@ -25,32 +26,76 @@ class ChatVC: UIViewController {
         })
     }
     
-    func getMessages() {
-       FireStoreManager.shared.getLatestMessages(chatID: chatID) { (documents, error) in
-            if let error = error {
-                // Handle the error
-                print("Error retrieving messages: \(error)")
-            } else if let documents = documents {
-                // Create an array to store MessageModel instances
-                var messages = [MessageModel]()
-                
-                for document in documents {
-                    let data = document.data()
+    
+    var lastMessageTimestamp: Double = 0 // Track the last message timestamp
+
+        func getMessages() {
+            FireStoreManager.shared.getLatestMessages(chatID: chatID) { (documents, error) in
+                if let error = error {
+                    print("Error retrieving messages: \(error)")
+                } else if let documents = documents {
+                    var messages = [MessageModel]()
                     
-                    // Create a MessageModel instance from Firestore data
-                    let message = MessageModel(data: data)
+                    for document in documents {
+                        let data = document.data()
+                        let message = MessageModel(data: data)
+                        messages.append(message)
+                        
+                        // Check if this is a new message from another user
+                        if message.sender != self.senderId && message.dateSent > self.lastMessageTimestamp {
+                            self.lastMessageTimestamp = message.dateSent
+                            self.sendNotification(for: message)
+                        }
+                    }
                     
-                    // Append the message to the array
-                    messages.append(message)
+                    self.messages = messages
+                    self.shortMessages()
+                    self.reloadData()
                 }
-                
-                self.messages = messages
-                self.shortMessages()
-                self.reloadData()
-                
             }
         }
-    }
+
+        func sendNotification(for message: MessageModel) {
+            let content = UNMutableNotificationContent()
+            content.title = "New message from \(message.senderName)"
+            content.body = message.text
+            content.sound = .default
+
+            let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: nil)
+            UNUserNotificationCenter.current().add(request) { error in
+                if let error = error {
+                    print("Failed to add notification request: \(error)")
+                }
+            }
+        }
+    
+//    
+//    func getMessages() {
+//       FireStoreManager.shared.getLatestMessages(chatID: chatID) { (documents, error) in
+//            if let error = error {
+//                // Handle the error
+//                print("Error retrieving messages: \(error)")
+//            } else if let documents = documents {
+//                // Create an array to store MessageModel instances
+//                var messages = [MessageModel]()
+//                
+//                for document in documents {
+//                    let data = document.data()
+//                    
+//                    // Create a MessageModel instance from Firestore data
+//                    let message = MessageModel(data: data)
+//                    
+//                    // Append the message to the array
+//                    messages.append(message)
+//                }
+//                
+//                self.messages = messages
+//                self.shortMessages()
+//                self.reloadData()
+//                
+//            }
+//        }
+//    }
 
 
  
