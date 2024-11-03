@@ -241,5 +241,66 @@ class FeedBackVC: UIViewController, UITextViewDelegate{
                 
             }
         
-    
 
+//var body: some View {
+//      VStack(alignment: .leading, spacing: 20) {
+//          Text("Feedback")
+//              .font(.largeTitle)
+//              .fontWeight(.bold)
+//          
+//          Text("Let us know your thoughts!")
+//              .font(.subheadline)
+//              .foregroundColor(.gray)
+//          
+//          Text("Your feedback:")
+//              .font(.headline)
+//          
+//          TextEditor(text: $feedbackText)
+//              .frame(height: 150)
+//              .padding()
+//              .background(Color(UIColor.systemGray6))
+//              .cornerRadius(8)
+//              .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.gray.opacity(0.5)))
+//          
+//          Text("Rate our service:")
+//              .font(.headline)
+//          
+//          Slider(value: $rating, in: 1...5, step: 1)
+//          Text("Rating: \(Int(rating))")
+//          
+//          Button(action: submitFeedback) {
+//              Text("Submit")
+//                  .font(.headline)
+//                  .frame(maxWidth: .infinity)
+//                  .padding()
+//                  .background(Color.blue)
+//                  .foregroundColor(.white)
+//                  .cornerRadius(8)
+//          }
+//          
+//          if submitted {
+//              Text("Thank you for your feedback!")
+//                  .foregroundColor(.green)
+//                  .font(.subheadline)
+//                  .padding(.top, 10)
+//          }
+//          
+//          Spacer()
+//      }
+//      .padding()
+//  }
+//  
+//  func submitFeedback() {
+//      // Add code to handle submission here
+//      // For example, send the feedback to a server
+//      submitted = true
+//  }
+//}
+//
+//struct FeedbackView_Previews: PreviewProvider {
+//  static var previews: some View {
+//      FeedbackView()
+//  }
+//}
+//    
+//
