@@ -16,44 +16,74 @@ class ChatVC: UIViewController {
     @IBOutlet weak var btnViewProfile: UIButton!
     @IBOutlet weak var sendMessageView: UIView!
     var chatID = ""
-    var messages = [MessageModel]()
-    var senderId = getEmail()
-    var senderName = UserDefaultsManager.shared.getFullname()
-    
-    func shortMessages() {
-        messages = messages.sorted(by: {
-            $0.getDate().compare($1.getDate()) == .orderedAscending
-        })
-    }
-    
-    
-    var lastMessageTimestamp: Double = 0 // Track the last message timestamp
+        var messages = [MessageModel]()
+        var senderId = getEmail()
+        var senderName = UserDefaultsManager.shared.getFullname()
+        
+        private let chatService = ChatService()
+        private var chats: [Chat] = []
+        
+        func shortMessages() {
+            messages = messages.sorted(by: {
+                $0.getDate().compare($1.getDate()) == .orderedAscending
+            })
+        }
+        
+        var lastMessageTimestamp: Double = 0 // Track the last message timestamp
 
-        func getMessages() {
-            FireStoreManager.shared.getLatestMessages(chatID: chatID) { (documents, error) in
-                if let error = error {
-                    print("Error retrieving messages: \(error)")
-                } else if let documents = documents {
-                    var messages = [MessageModel]()
+//        func getMessages() {
+//            FireStoreManager.shared.getLatestMessages(chatID: chatID) { (documents, error) in
+//                if let error = error {
+//                    print("Error retrieving messages: \(error)")
+//                } else if let documents = documents {
+//                    var messages = [MessageModel]()
+//                    
+//                    for document in documents {
+//                        let data = document.data()
+//                        let message = MessageModel(data: data)
+//                        messages.append(message)
+//                        
+//                        // Check if this is a new message from another user
+//                        if message.sender != self.senderId && message.dateSent > self.lastMessageTimestamp {
+//                            self.lastMessageTimestamp = message.dateSent
+//                            self.sendNotification(for: message)
+//                        }
+//                    }
+//                    
+//                    self.messages = messages
+//                    self.shortMessages()
+//                    self.reloadData()
+//                }
+//            }
+//        }
+    
+    func getMessages() {
+        FireStoreManager.shared.getLatestMessages(chatID: chatID) { (documents, error) in
+            if let error = error {
+                print("Error retrieving messages: \(error)")
+            } else if let documents = documents {
+                var messages = [MessageModel]()
+                let currentUserEmail = self.senderId
+                
+                for document in documents {
+                    let data = document.data()
+                    let message = MessageModel(data: data)
+                    messages.append(message)
                     
-                    for document in documents {
-                        let data = document.data()
-                        let message = MessageModel(data: data)
-                        messages.append(message)
-                        
-                        // Check if this is a new message from another user
-                        if message.sender != self.senderId && message.dateSent > self.lastMessageTimestamp {
-                            self.lastMessageTimestamp = message.dateSent
-                            self.sendNotification(for: message)
-                        }
+                    // Trigger notification only if recipient matches current user
+                    if message.sender != currentUserEmail && message.recipient == currentUserEmail && message.dateSent > self.lastMessageTimestamp {
+                        self.lastMessageTimestamp = message.dateSent
+                        self.sendNotification(for: message)
                     }
-                    
-                    self.messages = messages
-                    self.shortMessages()
-                    self.reloadData()
                 }
+                
+                self.messages = messages
+                self.shortMessages()
+                self.reloadData()
             }
         }
+    }
+
 
         func sendNotification(for message: MessageModel) {
             let content = UNMutableNotificationContent()
@@ -107,22 +137,31 @@ extension ChatVC {
  
     @IBAction func onSend(_ sender: Any) {
         
-        if(self.textView.text.isEmpty) {
-          
-           showAlerOnTop(message: "Please enter Text")
-        }
-        guard let text = self.textView.text else {
-            return
-        }
-
-        let msgText = text.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !msgText.isEmpty else {
-            return
-        }
- 
-        self.textView.text = ""
         
-        self.sendTextMessage(text:msgText)
+        guard let text = textView.text?.trimmingCharacters(in: .whitespacesAndNewlines), !text.isEmpty else {
+                    showAlerOnTop(message: "Please enter text")
+                    return
+                }
+                
+                textView.text = ""
+                sendTextMessage(text: text, recipientEmail: "")
+        
+//        if(self.textView.text.isEmpty) {
+//          
+//           showAlerOnTop(message: "Please enter Text")
+//        }
+//        guard let text = self.textView.text else {
+//            return
+//        }
+//
+//        let msgText = text.trimmingCharacters(in: .whitespacesAndNewlines)
+//        guard !msgText.isEmpty else {
+//            return
+//        }
+// 
+//        self.textView.text = ""
+//        
+//        self.sendTextMessage(text:msgText)
 
     }
     
@@ -130,18 +169,28 @@ extension ChatVC {
         return Double(Date().millisecondsSince1970)
     }
     
-    func sendTextMessage(text: String) {
-        self.view.endEditing(true)
-        
-     
-        FireStoreManager.shared.saveChat(userEmail: getEmail().lowercased(), text:text, time: getTime(), chatID: chatID)
-        
-      
-       // self.getMessages()
-       // self.tableView.reloadData()
- 
-    }
+//    func sendTextMessage(text: String) {
+//        self.view.endEditing(true)
+//        
+//     
+//        FireStoreManager.shared.saveChat(userEmail: getEmail().lowercased(), text:text, time: getTime(), chatID: chatID)
+//        
+//      
+//       // self.getMessages()
+//       // self.tableView.reloadData()
+// 
+//    }
     
+    func sendTextMessage(text: String, recipientEmail: String) {
+        FireStoreManager.shared.saveChat(
+            userEmail: senderId.lowercased(),
+            recipientEmail: recipientEmail,
+            text: text,
+            time: Double(Date().millisecondsSince1970),
+            chatID: chatID
+        )
+    }
+
     
 }
 
@@ -151,22 +200,48 @@ extension ChatVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return messages.count
     }
+    
+    
+    
 
 
+    
+    
+        
+
+
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//
+//
+//        let message = messages[indexPath.row]
+//        if message.sender ==  senderId {
+//            let cell = self.tableView.dequeueReusableCell(withIdentifier: "CometChatSenderTextMessageBubble") as! CometChatSenderTextMessageBubble
+//            cell.setData(message: message)
+//            return cell
+//            
+//        } else {
+//            let cell = self.tableView.dequeueReusableCell(withIdentifier: "CometChatReceiverTextMessageBubble") as! CometChatReceiverTextMessageBubble
+//            cell.setData(message: message)
+//            return cell
+//           
+//        }
+//    }
+
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
-
         let message = messages[indexPath.row]
-        if message.sender ==  senderId {
-            let cell = self.tableView.dequeueReusableCell(withIdentifier: "CometChatSenderTextMessageBubble") as! CometChatSenderTextMessageBubble
+        
+        if message.sender == senderId {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CometChatSenderTextMessageBubble") as! CometChatSenderTextMessageBubble
             cell.setData(message: message)
             return cell
-            
         } else {
-            let cell = self.tableView.dequeueReusableCell(withIdentifier: "CometChatReceiverTextMessageBubble") as! CometChatReceiverTextMessageBubble
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CometChatReceiverTextMessageBubble") as! CometChatReceiverTextMessageBubble
             cell.setData(message: message)
+            
+            // Display an indicator for unread messages
+            cell.unreadIndicator.isHidden = message.isRead
             return cell
-           
         }
     }
 
@@ -183,6 +258,8 @@ extension ChatVC {
         super.viewDidLoad()
         tableView.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: tableView.bounds.size.width - 10)
         self.chatContainer.dropShadow()
+        
+        fetchChats()
        
         self.setTableView()
         self.setNameAndTitle()
@@ -195,6 +272,19 @@ extension ChatVC {
             self.chatContainer.isHidden = false
         }
     }
+    
+    private func fetchChats() {
+           chatService.fetchChats { [weak self] chats in
+               self?.chats = chats
+               DispatchQueue.main.async {
+                   self?.tableView.reloadData()
+               }
+           }
+       }
+    
+    
+   
+
 
     
     func setNameAndTitle() {
@@ -214,9 +304,26 @@ extension ChatVC {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = true
+        
+        markMessagesAsRead()
     }
     
-    
+    func markMessagesAsRead() {
+        let chatDbRef = Firestore.firestore().collection("Chat")
+        let messagesCollection = chatDbRef.document(chatID).collection("Messages")
+        
+        messagesCollection.whereField("isRead", isEqualTo: false).getDocuments { (querySnapshot, error) in
+            if let error = error {
+                print("Error updating messages: \(error)")
+                return
+            }
+            
+            querySnapshot?.documents.forEach { document in
+                document.reference.updateData(["isRead": true])
+            }
+        }
+    }
+
     
    
     
@@ -260,26 +367,39 @@ func getChatID(email1: String, email2: String) -> String {
 }
 
 
+
+
+
+
 struct MessageModel {
     var sender: String
+    var recipient: String
     var dateSent: Double
     var chatId: String
     var text: String
     var senderName: String
-    
-    // Add an initializer to create a MessageModel from Firestore data
+    var isRead: Bool // New property for read status
+    var unreadCount: Int // Add this line
+    //var isUnread: Bool
+
     init(data: [String: Any]) {
-        self.sender = data["sender"] as? String ?? ""
-        self.dateSent = data["dateSent"] as? Double ?? 0.0
-        self.chatId = data["chatId"] as? String ?? ""
-        self.text = data["text"] as? String ?? ""
-        self.senderName = data["senderName"] as? String ?? ""
-    }
+            self.sender = data["sender"] as? String ?? ""
+            self.recipient = data["recipient"] as? String ?? "" // Initialize recipient
+            self.dateSent = data["dateSent"] as? Double ?? 0.0
+            self.chatId = data["chatId"] as? String ?? ""
+            self.text = data["text"] as? String ?? ""
+            self.senderName = data["senderName"] as? String ?? ""
+            self.isRead = data["isRead"] as? Bool ?? false
+            self.unreadCount = data["unreadCount"] as? Int ?? 0
+        
+        }
     
+    
+   
     func getDate() -> Date {
         Date(timeIntervalSince1970: dateSent)
     }
-    
+
     func getDataString() -> String {
         let date = Date(timeIntervalSince1970: dateSent)
         let formatter = DateFormatter()
@@ -290,27 +410,78 @@ struct MessageModel {
 
 
 
+
+
 extension FireStoreManager {
     
    
     
-      func saveChat(userEmail:String, text:String,time:Double,chatID:String){
-          
-         let chatDbRef = self.db.collection("Chat")
-         let lastMessages = self.db.collection("LastMessages")
-          
-          let sender = UserDefaultsManager.shared.getEmail()
-          let senderName = UserDefaultsManager.shared.getFullname()
-          
-          let data = ["senderName" : senderName,"sender": sender,"messageType":1,"dateSent":time,"chatId":chatID,"text" : text] as [String : Any]
-          
-          let messagesCollection = chatDbRef.document(chatID).collection("Messages")
-          messagesCollection.addDocument(data: data)
-          
-          lastMessages.document(chatID).setData(data)
-          
-      }
+//      func saveChat(userEmail:String, text:String,time:Double,chatID:String){
+//          
+//         let chatDbRef = self.db.collection("Chat")
+//         let lastMessages = self.db.collection("LastMessages")
+//          
+//          let sender = UserDefaultsManager.shared.getEmail()
+//          let senderName = UserDefaultsManager.shared.getFullname()
+//          
+//          let data = ["senderName" : senderName,"sender": sender,"messageType":1,"dateSent":time,"chatId":chatID,"text" : text] as [String : Any]
+//          
+//          let messagesCollection = chatDbRef.document(chatID).collection("Messages")
+//          messagesCollection.addDocument(data: data)
+//          
+//          lastMessages.document(chatID).setData(data)
+//          
+//      }
       
+//    
+//    func saveChat(userEmail: String, text: String, time: Double, chatID: String) {
+//        let chatDbRef = self.db.collection("Chat")
+//        let lastMessages = self.db.collection("LastMessages")
+//        
+//        let sender = UserDefaultsManager.shared.getEmail()
+//        let senderName = UserDefaultsManager.shared.getFullname()
+//        
+//        let data = [
+//            "senderName": senderName,
+//            "sender": sender,
+//            "messageType": 1,
+//            "dateSent": time,
+//            "chatId": chatID,
+//            "text": text,
+//            "isRead": false // Set isRead to false for new messages
+//        ] as [String: Any]
+//        
+//        let messagesCollection = chatDbRef.document(chatID).collection("Messages")
+//        messagesCollection.addDocument(data: data)
+//        
+//        lastMessages.document(chatID).setData(data)
+//    }
+
+    func saveChat(userEmail: String, recipientEmail: String, text: String, time: Double, chatID: String) {
+        let chatDbRef = self.db.collection("Chat")
+        let lastMessages = self.db.collection("LastMessages")
+        
+        let sender = UserDefaultsManager.shared.getEmail()
+        let senderName = UserDefaultsManager.shared.getFullname()
+        
+        let data = [
+            "senderName": senderName,
+            "sender": sender,
+            "recipient": recipientEmail, // Set recipient email
+            "messageType": 1,
+            "dateSent": time,
+            "chatId": chatID,
+            "text": text,
+            "isRead": false
+        ] as [String: Any]
+        
+        let messagesCollection = chatDbRef.document(chatID).collection("Messages")
+        messagesCollection.addDocument(data: data)
+        
+        lastMessages.document(chatID).setData(data)
+    }
+
+    
       func getLatestMessages(chatID: String, completionHandler: @escaping ([QueryDocumentSnapshot]?, Error?) -> Void) {
           let chatDbRef = self.db.collection("Chat")
           let messagesCollection = chatDbRef.document(chatID).collection("Messages")

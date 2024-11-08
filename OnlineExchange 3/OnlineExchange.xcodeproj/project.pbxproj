@@ -73,6 +73,9 @@
 		A9821CF22CBE009C0045937D /* PaymentDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9821CF12CBE009C0045937D /* PaymentDetailCell.swift */; };
 		A99384D42CB46F47007D32A6 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = A99384D32CB46F47007D32A6 /* Lottie */; };
 		A99384D62CB4706B007D32A6 /* initialVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99384D52CB4706B007D32A6 /* initialVC.swift */; };
+		A997F0412CD858BB00A83B1C /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = A997F0402CD858B300A83B1C /* Chat.swift */; };
+		A997F0432CD8593600A83B1C /* ChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A997F0422CD8592D00A83B1C /* ChatService.swift */; };
+		A997F0472CD980B900A83B1C /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A997F0462CD980A800A83B1C /* MessageModel.swift */; };
 		A9A18DE42CB9A9E10023C715 /* FavouriteTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A18DE32CB9A9E10023C715 /* FavouriteTVC.swift */; };
 		A9B15B2B2CC6D08100A210B0 /* FeedBackVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B15B2A2CC6D08100A210B0 /* FeedBackVC.swift */; };
 		A9B72F902CBB57A200D1ED25 /* FavoriteProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B72F8F2CBB57A200D1ED25 /* FavoriteProductCell.swift */; };
@@ -125,6 +128,9 @@
 		A9821CEF2CBDDF1F0045937D /* ReceiptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptViewController.swift; sourceTree = "<group>"; };
 		A9821CF12CBE009C0045937D /* PaymentDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentDetailCell.swift; sourceTree = "<group>"; };
 		A99384D52CB4706B007D32A6 /* initialVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = initialVC.swift; sourceTree = "<group>"; };
+		A997F0402CD858B300A83B1C /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
+		A997F0422CD8592D00A83B1C /* ChatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatService.swift; sourceTree = "<group>"; };
+		A997F0462CD980A800A83B1C /* MessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
 		A9A18DE32CB9A9E10023C715 /* FavouriteTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteTVC.swift; sourceTree = "<group>"; };
 		A9B15B2A2CC6D08100A210B0 /* FeedBackVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedBackVC.swift; sourceTree = "<group>"; };
 		A9B72F8F2CBB57A200D1ED25 /* FavoriteProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteProductCell.swift; sourceTree = "<group>"; };
@@ -192,6 +198,9 @@
 				800234CF2C9EF9B30049E5E9 /* ChatUser.swift */,
 				800234D02C9EF9B30049E5E9 /* ChatVC.swift */,
 				800234D12C9EF9B30049E5E9 /* TextViewWithPlaceholder.swift */,
+				A997F0402CD858B300A83B1C /* Chat.swift */,
+				A997F0422CD8592D00A83B1C /* ChatService.swift */,
+				A997F0462CD980A800A83B1C /* MessageModel.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -442,6 +451,7 @@
 				8055C57D2C95F21300420E0F /* AppDelegate.swift in Sources */,
 				8055C5B52C95F25500420E0F /* Extensions.swift in Sources */,
 				A9B72F902CBB57A200D1ED25 /* FavoriteProductCell.swift in Sources */,
+				A997F0432CD8593600A83B1C /* ChatService.swift in Sources */,
 				A9821CF22CBE009C0045937D /* PaymentDetailCell.swift in Sources */,
 				800234D72C9EF9B30049E5E9 /* ChatList.swift in Sources */,
 				800234DB2C9EF9B30049E5E9 /* ChatVC.swift in Sources */,
@@ -454,11 +464,13 @@
 				8055C5D02C98B77200420E0F /* ProductModel.swift in Sources */,
 				A9B15B2B2CC6D08100A210B0 /* FeedBackVC.swift in Sources */,
 				800234DA2C9EF9B30049E5E9 /* ChatUser.swift in Sources */,
+				A997F0412CD858BB00A83B1C /* Chat.swift in Sources */,
 				800234C22C9EF2B90049E5E9 /* AcceptedRequestVC.swift in Sources */,
 				8055C57F2C95F21300420E0F /* SceneDelegate.swift in Sources */,
 				8055C5A62C95F25500420E0F /* FireStoreManager.swift in Sources */,
 				8055C5A92C95F25500420E0F /* AdminHomeVC.swift in Sources */,
 				8055C5B12C95F25500420E0F /* SignUpVC.swift in Sources */,
+				A997F0472CD980B900A83B1C /* MessageModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

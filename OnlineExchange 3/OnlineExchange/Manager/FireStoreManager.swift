@@ -64,6 +64,11 @@ class FireStoreManager {
         }
     }
     
+    
+    
+    
+    
+    
     func checkAlreadyExistAndSignup(email:String, signupData: SignupModel) {
         
         getQueryFromFirestore(field: "email", compareValue: email) { querySnapshot in
@@ -385,6 +390,9 @@ class FireStoreManager {
             }
         }
     }
+    //Fetch and Update the Read Status Per User
+    
+    
     
     func getBidRequests(forUserId userId: String, completionHandler: @escaping ([ProductModel]?, Error?) -> ()) {
         let userRef = self.dbRef.document(userId).collection("RequestBidFromUser")
