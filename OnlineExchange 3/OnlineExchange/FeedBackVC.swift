@@ -108,15 +108,27 @@ class FeedBackVC: UIViewController, UITextViewDelegate{
            }
            
            // Function to show alert
-           private func showAlert(title: String, message: String) {
-               let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-               alert.addAction(UIAlertAction(title: "OK", style: .default))
-               present(alert, animated: true)
-           }
+//           private func showAlert(title: String, message: String) {
+//               let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+//               alert.addAction(UIAlertAction(title: "OK", style: .default))
+//               present(alert, animated: true)
+//           }
        
     
     
-    
+    private func submitFeedbackToServer(rating: Int, comment: String) {
+            // Replace with your database code, e.g., Firestore:
+            // let feedbackData = ["rating": rating, "comment": comment, "productID": product?.id]
+            // Firestore.firestore().collection("feedbacks").addDocument(data: feedbackData)
+            print("Feedback submitted with rating: \(rating) and comment: \(comment)")
+        }
+        
+        // MARK: - Alert Helper
+        private func showAlert(title: String, message: String) {
+            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default))
+            present(alert, animated: true)
+        }
     
     
     
