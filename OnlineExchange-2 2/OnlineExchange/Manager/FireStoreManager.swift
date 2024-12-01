@@ -4,6 +4,7 @@ import FirebaseCore
 import FirebaseFirestore
 import FirebaseStorage
 import Firebase
+import SwiftSMTP
 
 
 class FireStoreManager {
@@ -65,7 +66,89 @@ class FireStoreManager {
             }
         }
     }
-    
+
+
+    func forgotPassword(email: String, completion: @escaping (Bool) -> ()) {
+        let query = db.collection("Users").whereField("email", isEqualTo: email)
+
+        query.getDocuments { (querySnapshot, err) in
+            if let err = err {
+                print("Error fetching documents: \(err)")
+                showAlerOnTop(message: "Something went wrong while fetching your email")
+                completion(false)
+                return
+            }
+
+            guard let querySnapshot = querySnapshot, querySnapshot.count > 0 else {
+                showAlerOnTop(message: "Email id not found!!")
+                completion(false)
+                return
+            }
+
+            // Assuming only one document per user email
+            if let document = querySnapshot.documents.first {
+                if let password = document.data()["password"] as? String {
+                    // Send the password via email
+                    showAlerOnTop(message: "Password sent to your email")
+                    completion(true)
+                    self.sendEmail(to: email, password: password)
+
+                } else {
+                    showAlerOnTop(message: "No password found for the given email")
+                    completion(false)
+                }
+            }
+        }
+    }
+
+
+    /// Function to send email
+    func sendEmail(to email: String, password: String) {
+        // SMTP Server Configuration
+        let smtp = SMTP(
+            hostname: "smtp.gmail.com",   // Gmail SMTP server
+            email: "projectios85@gmail.com", // Your Gmail address
+            password: "rmrjwikhidfaluzy" // Your Gmail app password
+        )
+
+        // Email Content
+        let from = Mail.User(name: "Online Exchange", email: "your-email@gmail.com")
+        let to = Mail.User(name: "User", email: email)
+        let mail = Mail(
+            from: from,
+            to: [to],
+            subject: "Password Recovery - Online Exchange",
+            text: """
+            Hello,
+
+            You requested to recover your password for your Online Exchange account.
+
+            Your password is: \(password.decryptStr)
+
+            Please keep your password secure and do not share it with anyone.
+
+            Regards,
+            Online Exchange Team
+            """
+        )
+
+        // Send the Email
+        smtp.send(mail) { error in
+            if let error = error {
+                print("Failed to send email: \(error)")
+                DispatchQueue.main.async {
+                     showAlerOnTop(message: "Failed to send password recovery email. Please try again later.")
+                }
+            } else {
+                print("Email sent successfully!")
+                DispatchQueue.main.async {
+                   // showAlerOnTop(message: "Password recovery email has been sent successfully!")
+                }
+            }
+        }
+    }
+
+
     func checkAlreadyExistAndSignup(email:String, signupData: SignupModel) {
         
         getQueryFromFirestore(field: "email", compareValue: email) { querySnapshot in

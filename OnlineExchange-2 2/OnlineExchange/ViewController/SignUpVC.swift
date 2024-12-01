@@ -54,16 +54,57 @@ class SignUpVC: BaseViewController {
         
            if(self.password.text! != self.confirmPassword.text!) {
              showAlerOnTop(message: "Password doesn't match")
+                return false
+            }
+
+
+        // Check length
+           if self.password.text!.count < 6 || password.text!.count > 10 {
+               showAlerOnTop(message: "Password length should be between 6 and 10 characters")
+               return false
+           }
+
+        // Assuming `password` is a UITextField
+        if let passwordText = password.text, !passwordText.isEmpty {
+            // Check for at least one lowercase letter
+            let lowercasePattern = ".*[a-z]+.*"
+            if !NSPredicate(format: "SELF MATCHES %@", lowercasePattern).evaluate(with: passwordText) {
+                showAlerOnTop(message: "Password must contain at least one lowercase letter")
+                return false
+            }
+        } else {
+            showAlerOnTop(message: "Password cannot be empty")
             return false
         }
-        
-        if(self.password.text!.count < 5 || self.password.text!.count > 10 ) {
-            
-             showAlerOnTop(message: "Password  length shoud be 5 to 10")
+
+
+        if let passwordText = password.text, !passwordText.isEmpty {
+            // Check for at least one lowercase letter
+            let lowercasePattern = ".*[a-z]+.*"
+            if !NSPredicate(format: "SELF MATCHES %@", lowercasePattern).evaluate(with: passwordText) {
+                showAlerOnTop(message: "Password must contain at least one lowercase letter")
+                return false
+            }
+
+            // Check for at least one uppercase letter
+            let uppercasePattern = ".*[A-Z]+.*"
+            if !NSPredicate(format: "SELF MATCHES %@", uppercasePattern).evaluate(with: passwordText) {
+                showAlerOnTop(message: "Password must contain at least one uppercase letter")
+                return false
+            }
+
+            // Check for at least one digit
+            let digitPattern = ".*[0-9]+.*"
+            if !NSPredicate(format: "SELF MATCHES %@", digitPattern).evaluate(with: passwordText) {
+                showAlerOnTop(message: "Password must contain at least one digit")
+                return false
+            }
+        } else {
+            showAlerOnTop(message: "Password cannot be empty")
             return false
         }
-        
-        
+
+
         return true
     }
 

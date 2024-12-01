@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3EF584F12CF1335F0015CD81 /* SwiftSMTP in Frameworks */ = {isa = PBXBuildFile; productRef = 3EF584F02CF1335F0015CD81 /* SwiftSMTP */; };
 		800234C22C9EF2B90049E5E9 /* AcceptedRequestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800234C02C9EF2B90049E5E9 /* AcceptedRequestVC.swift */; };
 		800234C32C9EF2B90049E5E9 /* RejectedRequestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800234C12C9EF2B90049E5E9 /* RejectedRequestVC.swift */; };
 		800234C52C9EF2D20049E5E9 /* RequestListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800234C42C9EF2D20049E5E9 /* RequestListVC.swift */; };
@@ -134,6 +135,7 @@
 				80D7492B2CC926B4007011FC /* FirebaseStorage in Frameworks */,
 				80D749212CC926B4007011FC /* FirebaseFirestore in Frameworks */,
 				80D7492D2CC926B4007011FC /* FirebaseStorageCombine-Community in Frameworks */,
+				3EF584F12CF1335F0015CD81 /* SwiftSMTP in Frameworks */,
 				80D749292CC926B4007011FC /* FirebaseRemoteConfig in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -320,6 +322,7 @@
 				80D7492A2CC926B4007011FC /* FirebaseStorage */,
 				80D7492C2CC926B4007011FC /* FirebaseStorageCombine-Community */,
 				80169F5B2CE5EE69002078C5 /* Cosmos */,
+				3EF584F02CF1335F0015CD81 /* SwiftSMTP */,
 			);
 			productName = OnlineExchange;
 			productReference = 8055C5792C95F21300420E0F /* OnlineExchange.app */;
@@ -353,6 +356,7 @@
 				EAF7E0EF2CBF6B8C009FDD57 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 				80D749172CC926B4007011FC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				80169F5A2CE5EE69002078C5 /* XCRemoteSwiftPackageReference "Cosmos" */,
+				3EF584EF2CF1335F0015CD81 /* XCRemoteSwiftPackageReference "Swift-SMTP" */,
 			);
 			productRefGroup = 8055C57A2C95F21300420E0F /* Products */;
 			projectDirPath = "";
@@ -647,6 +651,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		3EF584EF2CF1335F0015CD81 /* XCRemoteSwiftPackageReference "Swift-SMTP" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/IBM-Swift/Swift-SMTP";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
 		80169F5A2CE5EE69002078C5 /* XCRemoteSwiftPackageReference "Cosmos" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/evgenyneu/Cosmos.git";
@@ -674,6 +686,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		3EF584F02CF1335F0015CD81 /* SwiftSMTP */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3EF584EF2CF1335F0015CD81 /* XCRemoteSwiftPackageReference "Swift-SMTP" */;
+			productName = SwiftSMTP;
+		};
 		80169F5B2CE5EE69002078C5 /* Cosmos */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 80169F5A2CE5EE69002078C5 /* XCRemoteSwiftPackageReference "Cosmos" */;

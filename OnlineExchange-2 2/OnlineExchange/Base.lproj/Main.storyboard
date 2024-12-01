@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="T3W-Pc-QY3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="T3W-Pc-QY3">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -314,14 +314,47 @@
                                 </subviews>
                                 <edgeInsets key="layoutMargins" top="8" left="16" bottom="8" right="16"/>
                             </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wzB-i0-qhF">
+                                <rect key="frame" x="16" y="624" width="358" height="70"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pcd-oY-WLg" customClass="ButtonLayerSetup" customModule="OnlineExchange" customModuleProvider="target">
+                                        <rect key="frame" x="96.666666666666686" y="15" width="165" height="50"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="NFD-yZ-egD"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
+                                        <state key="normal" title="Forgot Password?">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="onForgotPassword:" destination="OXq-Ax-Zha" eventType="touchUpInside" id="huy-h1-6zN"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Pcd-oY-WLg" secondAttribute="bottom" constant="5" id="5z3-Fq-DUj"/>
+                                    <constraint firstItem="Pcd-oY-WLg" firstAttribute="centerX" secondItem="wzB-i0-qhF" secondAttribute="centerX" id="ev1-yz-uKe"/>
+                                    <constraint firstAttribute="height" constant="70" id="jj8-yG-RcA"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="snq-1I-qed"/>
                         <color key="backgroundColor" red="0.58431375029999999" green="0.72941178080000002" blue="0.61568629740000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="N1A-TM-IbN" firstAttribute="top" secondItem="wUU-3V-Sd8" secondAttribute="bottom" constant="20" id="46a-QG-FrC"/>
+                            <constraint firstItem="wzB-i0-qhF" firstAttribute="trailing" secondItem="wAO-3z-eWc" secondAttribute="trailing" id="5mc-0l-p7I"/>
                             <constraint firstItem="N1A-TM-IbN" firstAttribute="trailing" secondItem="snq-1I-qed" secondAttribute="trailing" id="GGq-fh-eSg"/>
+                            <constraint firstItem="wzB-i0-qhF" firstAttribute="leading" secondItem="wAO-3z-eWc" secondAttribute="leading" id="HYJ-ZK-vtK"/>
                             <constraint firstItem="wUU-3V-Sd8" firstAttribute="leading" secondItem="snq-1I-qed" secondAttribute="leading" constant="30" id="MRc-5s-53N"/>
                             <constraint firstItem="wUU-3V-Sd8" firstAttribute="top" secondItem="snq-1I-qed" secondAttribute="top" id="TRP-Kq-SOn"/>
+                            <constraint firstItem="wzB-i0-qhF" firstAttribute="top" secondItem="wAO-3z-eWc" secondAttribute="bottom" constant="5" id="fKC-Qe-cgq"/>
                             <constraint firstItem="snq-1I-qed" firstAttribute="trailing" secondItem="wUU-3V-Sd8" secondAttribute="trailing" constant="30" id="j2d-ND-vhe"/>
                             <constraint firstItem="N1A-TM-IbN" firstAttribute="leading" secondItem="snq-1I-qed" secondAttribute="leading" id="kER-bf-0NB"/>
                         </constraints>
@@ -3853,7 +3886,7 @@
         <image name="arrowshape.left" catalog="system" width="128" height="104"/>
         <image name="arrowshape.right" catalog="system" width="128" height="104"/>
         <image name="chevron.backward" catalog="system" width="97" height="128"/>
-        <image name="eye.slash" catalog="system" width="128" height="97"/>
+        <image name="eye.slash" catalog="system" width="128" height="95"/>
         <image name="heart" catalog="system" width="128" height="107"/>
         <image name="list.bullet.rectangle.portrait" catalog="system" width="115" height="128"/>
         <image name="logo" width="200" height="100"/>
@@ -3868,7 +3901,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="tintColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
