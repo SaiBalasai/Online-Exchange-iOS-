@@ -62,6 +62,10 @@
 		80D749292CC926B4007011FC /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = 80D749282CC926B4007011FC /* FirebaseRemoteConfig */; };
 		80D7492B2CC926B4007011FC /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 80D7492A2CC926B4007011FC /* FirebaseStorage */; };
 		80D7492D2CC926B4007011FC /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 80D7492C2CC926B4007011FC /* FirebaseStorageCombine-Community */; };
+		A9C19C1B2CFE3ED9007BA896 /* initialVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C19C1A2CFE3ED9007BA896 /* initialVC.swift */; };
+		A9D9F6C32CFE1DB50036765C /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D9F6C22CFE1DAF0036765C /* NotificationManager.swift */; };
+		A9D9F6C52CFE296C0036765C /* FavoriteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D9F6C42CFE296C0036765C /* FavoriteTableViewController.swift */; };
+		A9D9F6C72CFE29850036765C /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D9F6C62CFE29850036765C /* FavoriteTableViewCell.swift */; };
 		EA0340562CC19E4C006099E6 /* PaymentScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0340552CC19E4B006099E6 /* PaymentScreen.swift */; };
 		EA0340582CC1AD66006099E6 /* PaymentListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0340572CC1AD66006099E6 /* PaymentListVC.swift */; };
 		EA31702E2CC2BF7D0040B7C5 /* AesSslPinManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA31702D2CC2BF7C0040B7C5 /* AesSslPinManager.swift */; };
@@ -113,6 +117,10 @@
 		8055C5D42C99AE1200420E0F /* ProductListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListVC.swift; sourceTree = "<group>"; };
 		8055C5D62C99AFF800420E0F /* BidProductVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BidProductVC.swift; sourceTree = "<group>"; };
 		8055C5DD2C9AAB3E00420E0F /* BidRequestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BidRequestVC.swift; sourceTree = "<group>"; };
+		A9C19C1A2CFE3ED9007BA896 /* initialVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = initialVC.swift; sourceTree = "<group>"; };
+		A9D9F6C22CFE1DAF0036765C /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		A9D9F6C42CFE296C0036765C /* FavoriteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewController.swift; sourceTree = "<group>"; };
+		A9D9F6C62CFE29850036765C /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewCell.swift; sourceTree = "<group>"; };
 		EA0340552CC19E4B006099E6 /* PaymentScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentScreen.swift; sourceTree = "<group>"; };
 		EA0340572CC1AD66006099E6 /* PaymentListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentListVC.swift; sourceTree = "<group>"; };
 		EA31702D2CC2BF7C0040B7C5 /* AesSslPinManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AesSslPinManager.swift; sourceTree = "<group>"; };
@@ -202,8 +210,12 @@
 				8055C59F2C95F25500420E0F /* ViewController */,
 				8055C57C2C95F21300420E0F /* AppDelegate.swift */,
 				8055C57E2C95F21300420E0F /* SceneDelegate.swift */,
+				A9D9F6C22CFE1DAF0036765C /* NotificationManager.swift */,
 				8055C5A52C95F25500420E0F /* GoogleService-Info.plist */,
 				8055C5822C95F21300420E0F /* Main.storyboard */,
+				A9C19C1A2CFE3ED9007BA896 /* initialVC.swift */,
+				A9D9F6C62CFE29850036765C /* FavoriteTableViewCell.swift */,
+				A9D9F6C42CFE296C0036765C /* FavoriteTableViewController.swift */,
 				8055C5852C95F21500420E0F /* Assets.xcassets */,
 				8055C5872C95F21500420E0F /* LaunchScreen.storyboard */,
 				8055C58A2C95F21500420E0F /* Info.plist */,
@@ -357,6 +369,7 @@
 				80D749172CC926B4007011FC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				80169F5A2CE5EE69002078C5 /* XCRemoteSwiftPackageReference "Cosmos" */,
 				3EF584EF2CF1335F0015CD81 /* XCRemoteSwiftPackageReference "Swift-SMTP" */,
+				A9C19C1F2CFE42B9007BA896 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = 8055C57A2C95F21300420E0F /* Products */;
 			projectDirPath = "";
@@ -395,6 +408,7 @@
 				8055C5D52C99AE1200420E0F /* ProductListVC.swift in Sources */,
 				8055C5D72C99AFF800420E0F /* BidProductVC.swift in Sources */,
 				800234C32C9EF2B90049E5E9 /* RejectedRequestVC.swift in Sources */,
+				A9D9F6C32CFE1DB50036765C /* NotificationManager.swift in Sources */,
 				8055C5C82C96EBAF00420E0F /* ProfileVC.swift in Sources */,
 				8055C5AF2C95F25500420E0F /* SignupSelectionVC.swift in Sources */,
 				800234D92C9EF9B30049E5E9 /* ChatListVC.swift in Sources */,
@@ -407,12 +421,15 @@
 				800234DE2C9EFCDE0049E5E9 /* AdminAcceptedProductVC.swift in Sources */,
 				80169F5E2CE5F4FA002078C5 /* FeedbackVC.swift in Sources */,
 				8055C5B02C95F25500420E0F /* LoginVC.swift in Sources */,
+				A9C19C1B2CFE3ED9007BA896 /* initialVC.swift in Sources */,
 				8055C5DE2C9AAB3E00420E0F /* BidRequestVC.swift in Sources */,
 				8055C5CE2C98AFEE00420E0F /* AddProductVC.swift in Sources */,
 				8055C5AD2C95F25500420E0F /* BaseViewController.swift in Sources */,
 				8055C57D2C95F21300420E0F /* AppDelegate.swift in Sources */,
 				8055C5B52C95F25500420E0F /* Extensions.swift in Sources */,
+				A9D9F6C72CFE29850036765C /* FavoriteTableViewCell.swift in Sources */,
 				800234D72C9EF9B30049E5E9 /* ChatList.swift in Sources */,
+				A9D9F6C52CFE296C0036765C /* FavoriteTableViewController.swift in Sources */,
 				800234DB2C9EF9B30049E5E9 /* ChatVC.swift in Sources */,
 				8055C5B42C95F25500420E0F /* DesignableView.swift in Sources */,
 				8055C5A82C95F25500420E0F /* UserDefaultsManager.swift in Sources */,
@@ -673,6 +690,14 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 11.4.0;
+			};
+		};
+		A9C19C1F2CFE42B9007BA896 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.5.0;
 			};
 		};
 		EAF7E0EF2CBF6B8C009FDD57 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {

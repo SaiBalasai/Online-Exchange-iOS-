@@ -1,18 +1,58 @@
 //
 
+//import UIKit
+//
+//class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+//    
+//    static var shared: SceneDelegate?
+//    
+//    var myScene : UIScene!
+//     
+//    var window: UIWindow?
+//
+//
+//    func openHomeOrLogin() {
+//       
+//        guard let windowScene = (myScene as? UIWindowScene) else { return }
+//        
+//        SceneDelegate.shared = self
+//        
+//        window = UIWindow(frame: windowScene.coordinateSpace.bounds)
+//        window?.windowScene = windowScene
+//        
+//        let loginBool = UserDefaultsManager.shared.loginBool()
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        if loginBool {
+//            let userType = UserDefaultsManager.shared.getUserType()
+//            if userType == UserType.admin.rawValue{
+//                let homeVC = storyboard.instantiateViewController(withIdentifier: "AdminHome")
+//                window!.rootViewController = homeVC
+//            } else {
+//                let homeVC = storyboard.instantiateViewController(withIdentifier: "HomeNavi")
+//                window!.rootViewController = homeVC
+//            }
+//        } else {
+//            let loginVC = storyboard.instantiateViewController(withIdentifier: "HomeNavigation")
+//            window!.rootViewController = loginVC
+//        }
+//        
+//        window?.makeKeyAndVisible()
+//    }
+//    
+//    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+//        self.myScene = scene
+//        self.openHomeOrLogin()
+//    }
+
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     static var shared: SceneDelegate?
-    
-    var myScene : UIScene!
-     
+    var myScene: UIScene!
     var window: UIWindow?
 
-
     func openHomeOrLogin() {
-       
         guard let windowScene = (myScene as? UIWindowScene) else { return }
         
         SceneDelegate.shared = self
@@ -24,7 +64,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if loginBool {
             let userType = UserDefaultsManager.shared.getUserType()
-            if userType == UserType.admin.rawValue{
+            if userType == UserType.admin.rawValue {
                 let homeVC = storyboard.instantiateViewController(withIdentifier: "AdminHome")
                 window!.rootViewController = homeVC
             } else {
@@ -43,6 +83,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.myScene = scene
         self.openHomeOrLogin()
     }
+
+    // Other methods...
+}
+
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
@@ -73,5 +117,5 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
 
-}
+
 

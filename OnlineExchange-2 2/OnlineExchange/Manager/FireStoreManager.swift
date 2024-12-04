@@ -903,6 +903,18 @@ class FireStoreManager {
             }
         }
     }
+    func updateUserFullName(userId: String, newFullName: String, completion: @escaping (Bool) -> ()) {
+        dbRef.document(userId).updateData(["fullname": newFullName]) { err in
+            if let err = err {
+                showAlerOnTop(message: "Error updating full name: \(err)")
+                completion(false)
+            } else {
+                // Update UserDefaults with new full name if needed
+                UserDefaultsManager.shared.saveData(email: UserDefaultsManager.shared.getEmail(), userType: UserDefaultsManager.shared.getUserType(), fullname: newFullName)
+                completion(true)
+            }
+        }
+    }
 
     func removeFromWishlist(userID: String, product: ProductModel, completionHandler: @escaping (Bool) -> ()) {
         let userRef = self.dbRef.document(userID).collection("wishlist")

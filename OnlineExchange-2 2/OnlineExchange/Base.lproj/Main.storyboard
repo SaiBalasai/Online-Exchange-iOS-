@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="T3W-Pc-QY3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="T3W-Pc-QY3">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -726,12 +726,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="OXq-Ax-Zha" kind="relationship" relationship="rootViewController" id="B2R-E3-hOc"/>
+                        <segue destination="OXq-Ax-Zha" kind="relationship" relationship="rootViewController" id="CxG-2H-Cm7"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qFA-jt-eHC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="843.51145038167931" y="3.5211267605633805"/>
+            <point key="canvasLocation" x="-363" y="4"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Nd0-Wi-hju">
@@ -933,6 +933,26 @@
                                     </mask>
                                 </variation>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NHy-fd-si7" customClass="ButtonLayerSetup" customModule="OnlineExchange" customModuleProvider="target">
+                                <rect key="frame" x="70" y="426" width="250" height="50"/>
+                                <color key="backgroundColor" red="0.36862745099999999" green="0.75686275960000005" blue="0.50588238240000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="3Sk-4d-NO3"/>
+                                    <constraint firstAttribute="width" constant="250" id="ltQ-Ru-Qyd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
+                                <state key="normal" title="Update">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="update:" destination="wMY-H2-PXF" eventType="touchUpInside" id="3U5-79-3gn"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hYB-Fa-2Hx"/>
                         <color key="backgroundColor" red="0.58431375029999999" green="0.72941178080000002" blue="0.61568629740000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -940,8 +960,10 @@
                             <constraint firstItem="AM9-tR-XRO" firstAttribute="trailing" secondItem="hYB-Fa-2Hx" secondAttribute="trailing" id="7WJ-VX-5Oa"/>
                             <constraint firstItem="AM9-tR-XRO" firstAttribute="leading" secondItem="hYB-Fa-2Hx" secondAttribute="leading" id="7jh-dB-T4E"/>
                             <constraint firstItem="AM9-tR-XRO" firstAttribute="trailing" secondItem="hYB-Fa-2Hx" secondAttribute="trailing" id="CbQ-MV-qJO"/>
+                            <constraint firstItem="NHy-fd-si7" firstAttribute="top" secondItem="AM9-tR-XRO" secondAttribute="bottom" constant="8" id="HGM-xw-XUi"/>
                             <constraint firstItem="pmU-qt-uJQ" firstAttribute="trailing" secondItem="hYB-Fa-2Hx" secondAttribute="trailing" id="N5a-Au-Edz"/>
                             <constraint firstItem="pmU-qt-uJQ" firstAttribute="leading" secondItem="hYB-Fa-2Hx" secondAttribute="leading" id="fQU-5u-QTW"/>
+                            <constraint firstItem="NHy-fd-si7" firstAttribute="centerX" secondItem="AM9-tR-XRO" secondAttribute="centerX" id="gld-Ac-psN"/>
                             <constraint firstItem="AM9-tR-XRO" firstAttribute="top" secondItem="pmU-qt-uJQ" secondAttribute="bottom" constant="30" id="kem-s4-5fL"/>
                             <constraint firstItem="AM9-tR-XRO" firstAttribute="leading" secondItem="hYB-Fa-2Hx" secondAttribute="leading" id="m6d-hn-AWw"/>
                             <constraint firstItem="pmU-qt-uJQ" firstAttribute="top" secondItem="62T-BE-bI8" secondAttribute="top" id="ydf-aa-eEj"/>
@@ -1615,6 +1637,9 @@
                                                             </constraints>
                                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                             <state key="normal" image="heart" catalog="system"/>
+                                                            <connections>
+                                                                <action selector="favoriteButtonTapped:" destination="wFA-gr-mc8" eventType="touchUpInside" id="xy4-I9-7YG"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.85490196078431369" green="0.95686274509803915" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -2433,6 +2458,55 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kFg-KV-ffu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4719.2307692307695" y="1343.6018957345971"/>
+        </scene>
+        <!--Favorite Table View Controller-->
+        <scene sceneID="kj2-Ka-Xkx">
+            <objects>
+                <tableViewController id="XvZ-Jx-Dqs" customClass="FavoriteTableViewController" customModule="OnlineExchange" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="xoM-as-2at">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="133" id="jwv-l6-zK5" customClass="FavoriteTableViewCell" customModule="OnlineExchange" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="50" width="390" height="133"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jwv-l6-zK5" id="fYu-bZ-gsV">
+                                    <rect key="frame" x="0.0" y="0.0" width="390" height="133"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t1R-RX-YsF">
+                                            <rect key="frame" x="20" y="5" width="116" height="109"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Price: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a0T-ZT-FKE">
+                                            <rect key="frame" x="166" y="11" width="204" height="32"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zK5-o4-841">
+                                            <rect key="frame" x="166" y="71" width="204" height="31"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="XvZ-Jx-Dqs" id="S0V-g0-qo5"/>
+                            <outlet property="delegate" destination="XvZ-Jx-Dqs" id="MXP-FG-FGQ"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="2Y7-uA-7wm"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1cz-9a-77O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5847.6923076923076" y="1350"/>
         </scene>
         <!--Request ListVC-->
         <scene sceneID="Hh6-dM-X9T">
@@ -3878,15 +3952,15 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="EbD-sS-HY1"/>
-        <segue reference="cax-qt-Srh"/>
+        <segue reference="2Fa-rB-4gP"/>
+        <segue reference="VxY-bA-1ol"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.forward" catalog="system" width="128" height="95"/>
         <image name="arrowshape.left" catalog="system" width="128" height="104"/>
         <image name="arrowshape.right" catalog="system" width="128" height="104"/>
         <image name="chevron.backward" catalog="system" width="97" height="128"/>
-        <image name="eye.slash" catalog="system" width="128" height="95"/>
+        <image name="eye.slash" catalog="system" width="128" height="97"/>
         <image name="heart" catalog="system" width="128" height="107"/>
         <image name="list.bullet.rectangle.portrait" catalog="system" width="115" height="128"/>
         <image name="logo" width="200" height="100"/>
