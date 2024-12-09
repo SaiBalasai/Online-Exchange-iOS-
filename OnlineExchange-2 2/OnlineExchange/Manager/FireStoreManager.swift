@@ -147,6 +147,20 @@ class FireStoreManager {
             }
         }
     }
+    
+    func markProductAsSoldOut(productId: String) {
+        let db = Firestore.firestore()
+        db.collection("products").document(productId).updateData([
+            "isSoldOut": true
+        ]) { error in
+            if let error = error {
+                print("Error marking product as sold out: \(error.localizedDescription)")
+            } else {
+                print("Product marked as sold out successfully.")
+            }
+        }
+    }
+
 
 
     func checkAlreadyExistAndSignup(email:String, signupData: SignupModel) {

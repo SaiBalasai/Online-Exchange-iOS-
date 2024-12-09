@@ -80,10 +80,30 @@ extension ProductListVC {
         cell.productImage.sd_setImage(with: URL(string: imageUrl), placeholderImage: UIImage(named: "logo"))
         
         cell.acceptBtn.isHidden = true
+       // cell.acceptBtn.setTitle("Empty", for: .normal)
         cell.acceptBtn.tag = indexPath.row
         cell.heartBtn.tag = indexPath.row
 
         let userType = UserDefaultsManager.shared.getUserType()
+//        let userType1 = UserDefaultsManager.shared.getUserType()
+//        
+//        if userType1 == UserType.admin.rawValue {
+//            if data.adminEmail == UserDefaultsManager.shared.getEmail() {
+//                cell.acceptBtn.isHidden = false
+//                if self.arrSoldOutProducts.filter({ $0.productname == data.productname && $0.quantity == data.quantity }).count > 0 {
+//                    
+//                    //cell.acceptBtn.setTitle("Sold Out", for: .normal)
+//                    //cell.acceptBtn.backgroundColor = .red
+//                    //cell.quantity.text = "Quantity: 0(\(data.quantity))"
+//                    cell.acceptBtn.backgroundColor = .green
+//                    cell.acceptBtn.setTitle("Empty", for: .normal)
+//                } else {
+//                    cell.acceptBtn.isHidden = false
+//                    cell.acceptBtn.setTitle("empty", for: .normal)
+//                    //cell.acceptBtn.backgroundColor = colorThemeGreen
+//                    //                    cell.acceptBtn.addTarget(self, action: #selector(openRaiseRequest(_:)), for: .touchUpInside)
+//                    //                }
+//                }}}
         
         if userType != UserType.admin.rawValue {
             if data.adminEmail != UserDefaultsManager.shared.getEmail() {
@@ -91,6 +111,7 @@ extension ProductListVC {
                 if self.arrSoldOutProducts.filter({ $0.productname == data.productname && $0.quantity == data.quantity }).count > 0 {
                     cell.acceptBtn.setTitle("Sold Out", for: .normal)
                     cell.acceptBtn.backgroundColor = .red
+                    cell.quantity.text = "Quantity: 0(\(data.quantity))"
                 } else {
                     cell.acceptBtn.setTitle("Bid", for: .normal)
                     cell.acceptBtn.backgroundColor = colorThemeGreen

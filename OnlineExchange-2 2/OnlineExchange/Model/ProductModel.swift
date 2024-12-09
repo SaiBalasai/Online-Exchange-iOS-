@@ -17,8 +17,9 @@ struct ProductModel {
     var added_time: Int
     var isSoldOut: Bool
     var paymentStatus: String
+    var isOwner: Bool // Whether the logged-in user is the product owner
 
-    init(productname: String, adminId: String, price: String, quantity: String, productImageUrl: String, userId: String, availableQuantity: String, productDetail: String, adminEmail: String, userEmail: String, product_id: String, bidPrice: String, added_time : Int, isSoldOut : Bool = false, paymentStatus : String = "") {
+    init(productname: String, adminId: String, price: String, quantity: String, productImageUrl: String, userId: String, availableQuantity: String, productDetail: String, adminEmail: String, userEmail: String, product_id: String, bidPrice: String, added_time: Int, isSoldOut: Bool = false, paymentStatus: String = "", isOwner: Bool = false) {
         self.productname = productname
         self.adminId = adminId
         self.price = price
@@ -34,6 +35,7 @@ struct ProductModel {
         self.added_time = added_time
         self.isSoldOut = isSoldOut
         self.paymentStatus = paymentStatus
+        self.isOwner = isOwner
     }
 
     func toDictionary() -> [String: Any] {
@@ -51,11 +53,12 @@ struct ProductModel {
             "bidPrice": bidPrice,
             "added_time": added_time,
             "isSoldOut": isSoldOut,
-            "paymentStatus" : paymentStatus,
+            "paymentStatus": paymentStatus,
             "userEmail": userEmail
         ]
     }
     
+    // Initialize from dictionary
     init?(dictionary: [String: Any]) {
         guard let productname = dictionary["productname"] as? String,
               let adminId = dictionary["adminId"] as? String,
@@ -90,6 +93,7 @@ struct ProductModel {
         self.added_time = added_time
         self.isSoldOut = isSoldOut
         self.paymentStatus = paymentStatus
+        self.isOwner = userId == adminId // Automatically set `isOwner` based on comparison
     }
 }
 

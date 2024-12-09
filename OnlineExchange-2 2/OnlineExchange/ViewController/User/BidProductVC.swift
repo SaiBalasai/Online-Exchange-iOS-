@@ -21,25 +21,33 @@ class BidProductVC: BaseViewController, UITextFieldDelegate {
         
         self.showProductData()
         
+        // After fetching the product data, set the isOwner flag
+                if let product = productData {
+                    let currentUserId = UserDefaultsManager.shared.getDocumentId()  // Get the logged-in user's ID
+                    if currentUserId == product.adminId {
+                        productData?.isOwner = true
+                    }
+                }
+
+        
         bidpriceTxt.delegate = self
         
     }
     
     
-    func showProductData(){
-        self.productNameTxt.text = productData?.productname
-        self.priceTxt.text = productData?.price
-        self.quantityTxt.text = productData?.quantity
-        self.detailTxt.text = productData?.productDetail
-        self.highestbidpriceTxt.text = productData?.bidPrice
-
-        let imageUrl = productData?.productImageUrl ?? ""
-        
-        self.productimage.sd_setImage(with: URL(string: imageUrl), placeholderImage: UIImage(named: "logo"))
-        
-        bidPrice = Int(productData?.bidPrice ?? "0") ?? 0
-    }
+    func showProductData() {
+        // Assuming `productData` is available and contains the correct product model
+        if let product = productData {
+            // Check if the product is sold out and the user is the owner
+            if product.isSoldOut && product.isOwner {
+                self.quantityTxt.text = "0"  // Show quantity as 0 for the owner
+            } else {
+                self.quantityTxt.text = product.quantity  // Show normal quantity for others
+            }
+        }
     
+    }
+
     @IBAction func btnAddBid(_ sender: UIButton) {
         guard let text = bidpriceTxt.text, let enteredPrice = Int(text) else {
             showAlerOnTop(message: "Please enter bid amount.")
